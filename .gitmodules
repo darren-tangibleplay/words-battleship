@@ -1,0 +1,9 @@
+[submodule "Assets/Plugins/plugins"]
+	path = Assets/Plugins/plugins
+	url = https://github.com/tangibleplay/plugins.git
+[submodule "Assets/DTCoreModule"]
+	path = Assets/DTCoreModule
+	url = https://github.com/DarrenTsung/DTCoreModule.git
+[submodule "Assets/DTGameEngineModule"]
+	path = Assets/DTGameEngineModule
+	url = https://github.com/DarrenTsung/DTGameEngineModule.git
