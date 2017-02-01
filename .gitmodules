@@ -1,3 +1,6 @@
 [submodule "Assets/Plugins/plugins"]
 	path = Assets/Plugins/plugins
 	url = https://github.com/tangibleplay/plugins.git
+[submodule "Assets/shared"]
+	path = Assets/shared
+	url = https://github.com/tangibleplay/shared.git

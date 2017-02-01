@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">キャンセル</entry>
+<entry name="SETTINGS_RESET">RESET
+進捗</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">あなたは、サンプルゲームのタイルを持っていますか？</entry>
+<entry name="ACH_TITLE_complete2">完全な2</entry>
+<entry name="PROMPT_CONTINUE">持続する</entry>
+<entry name="SETTINGS_REPORT">検出
+問題</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">実績</entry>
+<entry name="BEST_SCORE">ベスト：{0}</entry>
+<entry name="PROMPT_MENU">メニュー</entry>
+<entry name="ACH_TITLE_completeall">Completionist</entry>
+<entry name="CLOSE_FANCY">持続する</entry>
+<entry name="PLAY_BUTTON">遊びます</entry>
+<entry name="SAMPLE_LEVEL1">試験レベル1</entry>
+<entry name="SAMPLE_LEVEL2">試験レベル2</entry>
+<entry name="SAMPLE_LEVEL3">試験レベル3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">ようこそ</entry>
+<entry name="SETTINGS_BACK">閉じる</entry>
+<entry name="RESET_LEVEL">あなたは、メニュー画面に戻る場合は、このレベルでのあなたの進歩を失うことになります。</entry>
+<entry name="SCORE_LABEL">スコア</entry>
+<entry name="ACH_TITLE_score1000">1000年のスコア</entry>
+<entry name="SETTINGS_HOME">メインメニュー</entry>
+<entry name="PROMPT_RESET">リセット</entry>
+<entry name="ACH_TEXT_completeall">ゲーム内のすべてのレベルを完了します。</entry>
+<entry name="PREVIOUS_HIGH_SCORE">あなたのハイスコア：{0}</entry>
+<entry name="LEVEL_ENTER">へようこそ！
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">新しいハイスコア！</entry>
+<entry name="ACH_TEXT_complete2">2レベルを完了</entry>
+<entry name="PROMPT_REPLAY">リプレイ</entry>
+<entry name="RESET_ALL">ゲームをリセットし、すべてのあなたの進歩を消しますか？</entry>
+<entry name="SETTINGS_RESTART">再起動レベル</entry>
+<entry name="ACH_TEXT_score1000">1000年のハイスコアを取得します。</entry>
+</entries>

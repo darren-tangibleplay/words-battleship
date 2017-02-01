@@ -1,0 +1,54 @@
+// Event message for Analytics v2.
+// https://docs.google.com/document/d/1T1xa6vhiF0fePYS2MHe6Kw9YxbGF5V_PV0Qij7m3Ak0/edit
+
+syntax = "proto2";
+package generated;
+
+option java_outer_classname = "AnalyticsSampleGame";
+
+import "Assets/shared/proto/AnalyticsEvent.proto";
+
+// SampleGame session event
+message SampleGameSessionEvent {
+  extend SessionEvent {
+    optional SampleGameSessionEvent samplegame = 9000;
+  }
+
+  optional string level_playing = 1;
+}
+
+// SampleGame level start event
+message SampleGameLevelEvent {
+  extend LevelEvent {
+    optional SampleGameLevelEvent samplegame = 9000;
+  }
+
+  optional int32 score = 1;
+  optional int32 previous_high_score = 2;
+  optional bool solved_before = 3;
+
+  optional int32 time_to_first_move_ms = 4;
+  optional int32 num_moves = 5;
+}
+
+// SampleGame specific per device properties
+message SampleGameUserProperties {
+  extend UserProperties {
+    optional SampleGameUserProperties samplegame = 9000;
+  }
+
+  optional int32 num_replay_presses = 1;
+  optional int32 num_continue_presses = 2;
+  optional int32 num_level_restarts = 3;
+  optional int32 total_num_moves = 4;
+}
+
+// SampleGame player state
+message SampleGamePlayerState {
+  extend PlayerState {
+    optional SampleGamePlayerState samplegame = 9000;
+  }
+
+  optional int32 unique_levels_unlocked = 1;
+  optional int32 unique_levels_solved = 2;
+}

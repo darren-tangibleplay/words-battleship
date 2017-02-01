@@ -1,0 +1,34 @@
+<entries>
+<entry name="PROMPT_CANCEL"></entry>
+<entry name="SETTINGS_RESET"></entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER"></entry>
+<entry name="ACH_TITLE_complete2"></entry>
+<entry name="PROMPT_CONTINUE"></entry>
+<entry name="SETTINGS_REPORT"></entry>
+<entry name="SETTINGS_ACHIEVEMENTS"></entry>
+<entry name="BEST_SCORE"></entry>
+<entry name="PROMPT_MENU"></entry>
+<entry name="ACH_TITLE_completeall"></entry>
+<entry name="CLOSE_FANCY"></entry>
+<entry name="PLAY_BUTTON">Play</entry>
+<entry name="SAMPLE_LEVEL1"></entry>
+<entry name="SAMPLE_LEVEL2"></entry>
+<entry name="SAMPLE_LEVEL3"></entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME"></entry>
+<entry name="SETTINGS_BACK"></entry>
+<entry name="RESET_LEVEL"></entry>
+<entry name="SCORE_LABEL"></entry>
+<entry name="ACH_TITLE_score1000"></entry>
+<entry name="SETTINGS_HOME"></entry>
+<entry name="PROMPT_RESET"></entry>
+<entry name="ACH_TEXT_completeall"></entry>
+<entry name="PREVIOUS_HIGH_SCORE"></entry>
+<entry name="LEVEL_ENTER"></entry>
+<entry name="SCORE_LABEL_HIGH_SCORE"></entry>
+<entry name="ACH_TEXT_complete2"></entry>
+<entry name="PROMPT_REPLAY"></entry>
+<entry name="RESET_ALL"></entry>
+<entry name="SETTINGS_RESTART"></entry>
+<entry name="ACH_TEXT_score1000"></entry>
+</entries>

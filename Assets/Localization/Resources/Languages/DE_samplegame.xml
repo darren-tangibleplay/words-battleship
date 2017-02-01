@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">Abbrechen</entry>
+<entry name="SETTINGS_RESET">NEU STARTEN
+VERLAUF</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Hai gioco tessere di esempio?</entry>
+<entry name="ACH_TITLE_complete2">Schließen Sie 2 ab</entry>
+<entry name="PROMPT_CONTINUE">Fortsetzen</entry>
+<entry name="SETTINGS_REPORT">FESTSTELLUNG
+PROBLEM</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Erfolge</entry>
+<entry name="BEST_SCORE">Bestes: {0}</entry>
+<entry name="PROMPT_MENU">Menü</entry>
+<entry name="ACH_TITLE_completeall">Perfektionist</entry>
+<entry name="CLOSE_FANCY">FORTSETZEN</entry>
+<entry name="PLAY_BUTTON">Spielen</entry>
+<entry name="SAMPLE_LEVEL1">Test di livello 1</entry>
+<entry name="SAMPLE_LEVEL2">Test di livello 2</entry>
+<entry name="SAMPLE_LEVEL3">Test di livello 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Herzlich willkommen</entry>
+<entry name="SETTINGS_BACK">Schließen</entry>
+<entry name="RESET_LEVEL">Ihr Fortschritt auf diesem Level geht verloren, wenn Sie zurück zum Menübildschirm kehren.</entry>
+<entry name="SCORE_LABEL">Ergebnis</entry>
+<entry name="ACH_TITLE_score1000">Ergebnis 1000</entry>
+<entry name="SETTINGS_HOME">Hauptmenü</entry>
+<entry name="PROMPT_RESET">Zurücksetzen</entry>
+<entry name="ACH_TEXT_completeall">Completa tutti i livelli del gioco.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Ihr Rekordergebnis: {0}</entry>
+<entry name="LEVEL_ENTER">Willkommen bei
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Neues Rekordergebnis!</entry>
+<entry name="ACH_TEXT_complete2">Completa 2 livelli</entry>
+<entry name="PROMPT_REPLAY">Wiederholen</entry>
+<entry name="RESET_ALL">Starten Sie das Spiel neu und löschen Sie alle Ihre Fortschritte?</entry>
+<entry name="SETTINGS_RESTART">Level neu starten</entry>
+<entry name="ACH_TEXT_score1000">Erhalten Sie ein Rekordergebnis von 1000.</entry>
+</entries>

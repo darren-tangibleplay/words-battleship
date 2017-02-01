@@ -1,0 +1,30 @@
+[
+    {
+        "order":1,
+        "id": "complete2",
+        "message":"levels_solved",
+        "title": "Complete 2",
+        "desc": "Complete 2 levels.",
+        "goal": 2,
+        "hidden": false
+    },
+    {
+        "order":2,
+        "id": "completeall",
+        "message":"levels_solved",
+        "title": "Complete all",
+        "desc": "Complete all levels.",
+        "goal": 3,
+        "hidden": false
+    },
+    {
+        "order":3,
+        "id": "score1000",
+        "message":"high_score",
+        "title": "Score 1000",
+        "desc": "Get a high score of 1000.",
+        "goal": 1000,
+        "hidden": false,
+	"increasing": true
+    }
+]

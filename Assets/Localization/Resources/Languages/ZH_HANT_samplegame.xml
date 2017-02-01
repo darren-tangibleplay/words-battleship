@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">取消</entry>
+<entry name="SETTINGS_RESET">重啟
+進展</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">你有樣的遊戲瓷磚？</entry>
+<entry name="ACH_TITLE_complete2">完成2</entry>
+<entry name="PROMPT_CONTINUE">繼續</entry>
+<entry name="SETTINGS_REPORT">檢測
+問題</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">成就</entry>
+<entry name="BEST_SCORE">最佳：{0}</entry>
+<entry name="PROMPT_MENU">菜單</entry>
+<entry name="ACH_TITLE_completeall">Completionist</entry>
+<entry name="CLOSE_FANCY">繼續</entry>
+<entry name="PLAY_BUTTON">玩</entry>
+<entry name="SAMPLE_LEVEL1">測試1級</entry>
+<entry name="SAMPLE_LEVEL2">測試2級</entry>
+<entry name="SAMPLE_LEVEL3">測試3級</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">歡迎</entry>
+<entry name="SETTINGS_BACK">關</entry>
+<entry name="RESET_LEVEL">如果您返回菜單屏幕，你將失去在這個層面上你的進步。</entry>
+<entry name="SCORE_LABEL">得分了</entry>
+<entry name="ACH_TITLE_score1000">1000得分</entry>
+<entry name="SETTINGS_HOME">主菜單</entry>
+<entry name="PROMPT_RESET">重啟</entry>
+<entry name="ACH_TEXT_completeall">在遊戲中完成所有的水平。</entry>
+<entry name="PREVIOUS_HIGH_SCORE">您的高分：{0}</entry>
+<entry name="LEVEL_ENTER">歡迎來到
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">得分新高！</entry>
+<entry name="ACH_TEXT_complete2">完成2級</entry>
+<entry name="PROMPT_REPLAY">重播</entry>
+<entry name="RESET_ALL">重置遊戲並刪除所有你的進步？</entry>
+<entry name="SETTINGS_RESTART">重置關卡</entry>
+<entry name="ACH_TEXT_score1000">獲得高分的1000。</entry>
+</entries>

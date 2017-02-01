@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">Cancel</entry>
+<entry name="SETTINGS_RESET">RESET
+PROGRESS</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Do you have sample game tiles?</entry>
+<entry name="ACH_TITLE_complete2">Complete 2</entry>
+<entry name="PROMPT_CONTINUE">Continue</entry>
+<entry name="SETTINGS_REPORT">DETECTION
+ISSUE</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Achievements</entry>
+<entry name="BEST_SCORE">Best: {0}</entry>
+<entry name="PROMPT_MENU">Menu</entry>
+<entry name="ACH_TITLE_completeall">Completionist</entry>
+<entry name="CLOSE_FANCY">CONTINUE</entry>
+<entry name="PLAY_BUTTON">Play</entry>
+<entry name="SAMPLE_LEVEL1">Test Level 1</entry>
+<entry name="SAMPLE_LEVEL2">Test Level 2</entry>
+<entry name="SAMPLE_LEVEL3">Test Level 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Welcome</entry>
+<entry name="SETTINGS_BACK">Close</entry>
+<entry name="RESET_LEVEL">You will lose your progress on this level if you return to the menu screen.</entry>
+<entry name="SCORE_LABEL">Score</entry>
+<entry name="ACH_TITLE_score1000">Score 1000</entry>
+<entry name="SETTINGS_HOME">Main Menu</entry>
+<entry name="PROMPT_RESET">Reset</entry>
+<entry name="ACH_TEXT_completeall">Complete all the levels in the game.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Your high score: {0}</entry>
+<entry name="LEVEL_ENTER">Welcome to
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">New High Score!</entry>
+<entry name="ACH_TEXT_complete2">Complete 2 levels</entry>
+<entry name="PROMPT_REPLAY">Replay</entry>
+<entry name="RESET_ALL">Reset the game and erase all your progress?</entry>
+<entry name="SETTINGS_RESTART">Restart Level</entry>
+<entry name="ACH_TEXT_score1000">Get a high score of 1000.</entry>
+</entries>

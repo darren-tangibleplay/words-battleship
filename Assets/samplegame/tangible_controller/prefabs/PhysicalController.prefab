@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: PhysicalController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5160920655fe4996ae4f202dbd5889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card_prefab_: {fileID: 400000, guid: 14c6f48b14a42404b9244900e0b804c5, type: 2}
+  tangram_prefab_: {fileID: 400000, guid: d57cf973bbf0d4b79afbe50670ecbde9, type: 2}
+  topcode_prefab_: {fileID: 400000, guid: 5ce832e2514d548c58bd9d061c08b8a7, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: physical_object_refab_
+      value: 
+      objectReference: {fileID: 400000, guid: 14c6f48b14a42404b9244900e0b804c5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: card_size_screen_
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: persistence_
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: physical_object_prefab_
+      value: 
+      objectReference: {fileID: 400000, guid: 14c6f48b14a42404b9244900e0b804c5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: card_prefab_
+      value: 
+      objectReference: {fileID: 400000, guid: 14c6f48b14a42404b9244900e0b804c5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: tangram_prefab_
+      value: 
+      objectReference: {fileID: 400000, guid: d57cf973bbf0d4b79afbe50670ecbde9, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1

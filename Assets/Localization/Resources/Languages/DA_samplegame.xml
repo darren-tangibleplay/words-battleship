@@ -1,0 +1,36 @@
+<entries>
+<entry name="PROMPT_CANCEL">Annuller</entry>
+<entry name="SETTINGS_RESET">NULSTIL
+FREMSKRIDT</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Har du prøve spil fliser?</entry>
+<entry name="ACH_TITLE_complete2">Gennemfør 2</entry>
+<entry name="PROMPT_CONTINUE">Fortsæt</entry>
+<entry name="SETTINGS_REPORT">PROBLEM MED REGISTRERING</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Præstationer</entry>
+<entry name="BEST_SCORE">Bedste: {0}</entry>
+<entry name="PROMPT_MENU">Menu</entry>
+<entry name="ACH_TITLE_completeall">Fuldfører</entry>
+<entry name="CLOSE_FANCY">FORTSÆT</entry>
+<entry name="PLAY_BUTTON">Spil</entry>
+<entry name="SAMPLE_LEVEL1">Test Level 1</entry>
+<entry name="SAMPLE_LEVEL2">Test Niveau 2</entry>
+<entry name="SAMPLE_LEVEL3">Test Level 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Velkommen</entry>
+<entry name="SETTINGS_BACK">Luk</entry>
+<entry name="RESET_LEVEL">Du mister fremskridtet på dette niveau, hvis du vender tilbage til menuskærmen.</entry>
+<entry name="SCORE_LABEL">Score</entry>
+<entry name="ACH_TITLE_score1000">Score 1000</entry>
+<entry name="SETTINGS_HOME">Hovedmenu</entry>
+<entry name="PROMPT_RESET">Nulstil</entry>
+<entry name="ACH_TEXT_completeall">Gennemfør alle niveauer i spillet.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Din highscore: {0}</entry>
+<entry name="LEVEL_ENTER">Velkommen til
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Ny highscore!</entry>
+<entry name="ACH_TEXT_complete2">Komplet 2 niveauer</entry>
+<entry name="PROMPT_REPLAY">Spil igen</entry>
+<entry name="RESET_ALL">Vil du nulstille spillet og slette alle fremskridt?</entry>
+<entry name="SETTINGS_RESTART">Start forfra på niveauet</entry>
+<entry name="ACH_TEXT_score1000">Få en highscore på 1000.</entry>
+</entries>

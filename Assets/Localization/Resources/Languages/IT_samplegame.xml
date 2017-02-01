@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">Annulla</entry>
+<entry name="SETTINGS_RESET">RESET
+AVANZAMENTO</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">¿Tiene azulejos juego de ejemplo?</entry>
+<entry name="ACH_TITLE_complete2">Completa 2</entry>
+<entry name="PROMPT_CONTINUE">Continua </entry>
+<entry name="SETTINGS_REPORT">RILEVATO
+PROBLEMA</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Risultati</entry>
+<entry name="BEST_SCORE">Migliore {0}</entry>
+<entry name="PROMPT_MENU">Menu</entry>
+<entry name="ACH_TITLE_completeall">Elenco Completati</entry>
+<entry name="CLOSE_FANCY">CONTINUARE</entry>
+<entry name="PLAY_BUTTON">Gioca</entry>
+<entry name="SAMPLE_LEVEL1">Prueba de nivel 1</entry>
+<entry name="SAMPLE_LEVEL2">Prueba de nivel 2</entry>
+<entry name="SAMPLE_LEVEL3">Prueba de nivel 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Ben arrivata</entry>
+<entry name="SETTINGS_BACK">Chiudi</entry>
+<entry name="RESET_LEVEL">Se ritorni alla pagina menu perderai i tuoi progressi a questo livello</entry>
+<entry name="SCORE_LABEL">Punteggio</entry>
+<entry name="ACH_TITLE_score1000">Punteggio 1000</entry>
+<entry name="SETTINGS_HOME">Menu principale</entry>
+<entry name="PROMPT_RESET">Azzera</entry>
+<entry name="ACH_TEXT_completeall">Completar todos los niveles en el juego.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Il tuo punteggiopiù alto {0}</entry>
+<entry name="LEVEL_ENTER">Benvenuti a
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Nuovo record!</entry>
+<entry name="ACH_TEXT_complete2">Completar 2 niveles</entry>
+<entry name="PROMPT_REPLAY">Gioca di nuovo</entry>
+<entry name="RESET_ALL">Resettare il gioco e cancellare tutti i vostri progressi?</entry>
+<entry name="SETTINGS_RESTART">Riavvia Livello</entry>
+<entry name="ACH_TEXT_score1000">Ottieni un Punteggio Elevato di 1000.</entry>
+</entries>

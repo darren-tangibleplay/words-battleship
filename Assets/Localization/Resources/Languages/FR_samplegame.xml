@@ -1,0 +1,38 @@
+<entries>
+<entry name="PROMPT_CANCEL">Annuler</entry>
+<entry name="SETTINGS_RESET">REINITIALISER
+PROGRESSION</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Avez-vous des jeux tuiles d&#39;échantillons?</entry>
+<entry name="ACH_TITLE_complete2">Complète 2</entry>
+<entry name="PROMPT_CONTINUE">Continuer</entry>
+<entry name="SETTINGS_REPORT">PROBLEME
+DE DETECTION</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Objectifs</entry>
+<entry name="BEST_SCORE">Meilleur: {0}</entry>
+<entry name="PROMPT_MENU">Menu</entry>
+<entry name="ACH_TITLE_completeall">Liste complète</entry>
+<entry name="CLOSE_FANCY">CONTINUER</entry>
+<entry name="PLAY_BUTTON">Jouer</entry>
+<entry name="SAMPLE_LEVEL1">Niveau de Test 1</entry>
+<entry name="SAMPLE_LEVEL2">Test de niveau 2</entry>
+<entry name="SAMPLE_LEVEL3">Niveau de Test 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Bienvenue</entry>
+<entry name="SETTINGS_BACK">Fermer</entry>
+<entry name="RESET_LEVEL">Tu vas perdre ta progression si tu reviens au menu.</entry>
+<entry name="SCORE_LABEL">Score</entry>
+<entry name="ACH_TITLE_score1000">Score 1000</entry>
+<entry name="SETTINGS_HOME">Menu principal</entry>
+<entry name="PROMPT_RESET">Réinitialiser</entry>
+<entry name="ACH_TEXT_completeall">Complétez tous les niveaux dans le jeu.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Ton meilleur score: {0}</entry>
+<entry name="LEVEL_ENTER">Bienvenue à
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Nouveau meilleur score!</entry>
+<entry name="ACH_TEXT_complete2">Complete 2 niveaux</entry>
+<entry name="PROMPT_REPLAY">Rejouer</entry>
+<entry name="RESET_ALL">Réinitialiser et recommencer du début?</entry>
+<entry name="SETTINGS_RESTART">Rejouer
+</entry>
+<entry name="ACH_TEXT_score1000">Obtiens un score élevé de 1000.</entry>
+</entries>

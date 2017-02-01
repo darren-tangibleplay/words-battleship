@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &128190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474412}
+  - 114: {fileID: 11496512}
+  - 114: {fileID: 11465560}
+  m_Layer: 0
+  m_Name: TopcodeDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &474412
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11465560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fe1aedf3fb64558b556fa1a58b63bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config_json_file_: {fileID: 4900000, guid: 15f019a4d2c874b168271ef81a9f5333, type: 3}
+--- !u!114 &11496512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d1d00c30710454587447bbed1a1897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mmToScreen: 2.54
+  _cardPrefab: {fileID: 11400000, guid: 45faa6d1e8cbf44a5ab75f6d55e404cd, type: 2}
+  _defaultImage: {fileID: 21300000, guid: 94bd854e74ec5436aac9b2557450a087, type: 3}
+  _overrideIds: 1f0000003d000000370000003b000000
+  _overrideImages:
+  - {fileID: 21300000, guid: 645f59b2ceb224657aaad25c88176473, type: 3}
+  - {fileID: 21300000, guid: 13b9c8854a4504fa090d92d3499e2402, type: 3}
+  - {fileID: 21300000, guid: f1f938c0eca4e4ae5a031594c3bd53a9, type: 3}
+  - {fileID: 21300000, guid: af293afff26a440cf9f9a8ac06233224, type: 3}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: sizeScreen
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: recognitionMode
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 128190}
+  m_IsPrefabParent: 1

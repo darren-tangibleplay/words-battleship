@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">Kansellere</entry>
+<entry name="SETTINGS_RESET">RESET
+FRAMGANG</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Har du eksempler på spill fliser?</entry>
+<entry name="ACH_TITLE_complete2">komplett 2</entry>
+<entry name="PROMPT_CONTINUE">Fortsette</entry>
+<entry name="SETTINGS_REPORT">GJENKJENNING
+UTGAVE</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">prestasjoner</entry>
+<entry name="BEST_SCORE">Best: {0}</entry>
+<entry name="PROMPT_MENU">Meny</entry>
+<entry name="ACH_TITLE_completeall">Completionist</entry>
+<entry name="CLOSE_FANCY">FORTSETTE</entry>
+<entry name="PLAY_BUTTON">Spille</entry>
+<entry name="SAMPLE_LEVEL1">Test Nivå 1</entry>
+<entry name="SAMPLE_LEVEL2">Test Nivå 2</entry>
+<entry name="SAMPLE_LEVEL3">Test Nivå 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Velkommen</entry>
+<entry name="SETTINGS_BACK">Lukke</entry>
+<entry name="RESET_LEVEL">Du vil miste din fremgang på dette nivået hvis du går tilbake til menyskjermen.</entry>
+<entry name="SCORE_LABEL">Score</entry>
+<entry name="ACH_TITLE_score1000">Resultat 1000</entry>
+<entry name="SETTINGS_HOME">Hovedmeny</entry>
+<entry name="PROMPT_RESET">Tilbakestill</entry>
+<entry name="ACH_TEXT_completeall">Fullføre alle nivåer i spillet.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Din høy score: {0}</entry>
+<entry name="LEVEL_ENTER">Velkommen til
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Ny rekord!</entry>
+<entry name="ACH_TEXT_complete2">Komplett 2 nivåer</entry>
+<entry name="PROMPT_REPLAY">Replay</entry>
+<entry name="RESET_ALL">Tilbake spillet og slette all fremgangen din?</entry>
+<entry name="SETTINGS_RESTART">Restart nivå</entry>
+<entry name="ACH_TEXT_score1000">Få en høy poengsum på 1000.</entry>
+</entries>

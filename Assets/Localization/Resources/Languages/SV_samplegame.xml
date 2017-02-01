@@ -1,0 +1,34 @@
+<entries>
+<entry name="PROMPT_CANCEL">Avbryt</entry>
+<entry name="SETTINGS_RESET">ÅTERSTÄLLNING</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Har du prøve spil fliser?</entry>
+<entry name="ACH_TITLE_complete2">Slutför 2</entry>
+<entry name="PROMPT_CONTINUE">Fortsätt</entry>
+<entry name="SETTINGS_REPORT">IDENTIFIERINGSPROBLEM</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Framsteg</entry>
+<entry name="BEST_SCORE">Bästa: {0}</entry>
+<entry name="PROMPT_MENU">Meny</entry>
+<entry name="ACH_TITLE_completeall">Perfektionist</entry>
+<entry name="CLOSE_FANCY">FORTSÄTT</entry>
+<entry name="PLAY_BUTTON">Spela</entry>
+<entry name="SAMPLE_LEVEL1">Test Level 1</entry>
+<entry name="SAMPLE_LEVEL2">Test Niveau 2</entry>
+<entry name="SAMPLE_LEVEL3">Test Level 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Välkommen</entry>
+<entry name="SETTINGS_BACK">Stäng</entry>
+<entry name="RESET_LEVEL">Du kommer att förlora dina framsteg för denna nivå om du återgår till menyskärmen.</entry>
+<entry name="SCORE_LABEL">Poäng</entry>
+<entry name="ACH_TITLE_score1000">Poäng 1000</entry>
+<entry name="SETTINGS_HOME">Huvudmeny</entry>
+<entry name="PROMPT_RESET">Återställ</entry>
+<entry name="ACH_TEXT_completeall">Gennemfør alle niveauer i spillet.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Ditt poängrekord: {0}</entry>
+<entry name="LEVEL_ENTER">Välkommen till{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Nytt poängrekord!</entry>
+<entry name="ACH_TEXT_complete2">Komplet 2 niveauer</entry>
+<entry name="PROMPT_REPLAY">Spela om</entry>
+<entry name="RESET_ALL">Återställ spelet och rensa bort alla dina framsteg?</entry>
+<entry name="SETTINGS_RESTART">Starta om nivå</entry>
+<entry name="ACH_TEXT_score1000">Få rekordpoäng på 1000.</entry>
+</entries>

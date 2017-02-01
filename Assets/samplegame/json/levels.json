@@ -1,0 +1,24 @@
+{
+  "Levels": [
+    {
+      "Name": "SAMPLE_LEVEL1",
+      "LevelPrefab": "SampleGameLevel",
+      "UsesScore": true,
+      "StartUnlocked": true,
+      "InitialSelection": true,
+      "NextLevels": ["SAMPLE_LEVEL2"]
+    },
+    {
+      "Name": "SAMPLE_LEVEL2",
+      "LevelPrefab": "SampleGameLevel",
+      "UsesScore": true,
+      "NextLevels": ["SAMPLE_LEVEL3"]
+    },
+    {
+      "Name": "SAMPLE_LEVEL3",
+      "LevelPrefab": "SampleGameLevel",
+      "UsesScore": true,
+      "NextLevels": []
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457172}
+  - 114: {fileID: 11463664}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: LevelManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457172
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11463664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1be106ae5c644aeb6e93a8928e2389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dot_level_prefabs_:
+  - {fileID: 196816, guid: fade119d5c2da4128906dc3e246efbff, type: 2}
+  - {fileID: 112684, guid: 67f5ff312efe24e318e3375b03baec06, type: 2}
+  - {fileID: 169732, guid: 86865d8ce56014448852217e54632cc2, type: 2}
+  - {fileID: 183034, guid: b34430e3422264091bf44177d68835eb, type: 2}
+  - {fileID: 135892, guid: 3b7b2cdbf23fa43b1b100daf240776f4, type: 2}
+  addition_level_prefabs_:
+  - {fileID: 128500, guid: 59076f022f4e04c9aa1d386d018160dc, type: 2}
+  - {fileID: 103506, guid: 42c4366b51b004b7a8ca7b7653b06c71, type: 2}
+  - {fileID: 192006, guid: 0445a6919a58742f7a9fe661cdbc894d, type: 2}
+  - {fileID: 191916, guid: 314186637bf38499594dc53c889b758b, type: 2}
+  - {fileID: 101330, guid: d18cb2abd48194309b4b8abdab5e27ac, type: 2}
+  concat_level_prefabs_:
+  - {fileID: 196816, guid: 525615ba776e9442aa78b886f1eb8084, type: 2}
+  - {fileID: 177060, guid: c8d609c143cc2424daaa573a6ff4d790, type: 2}
+  - {fileID: 117764, guid: 1cbe0f70adbf949fd92914188b8bf6d4, type: 2}
+  - {fileID: 190662, guid: d48abfcc0efaa43648dbf0d3238525cd, type: 2}
+  - {fileID: 182872, guid: 379daec6678994516b02bad3fea19346, type: 2}
+  multiply_level_prefabs_:
+  - {fileID: 199912, guid: 3d0c4431ce3274c48b7ee0c742596f02, type: 2}
+  - {fileID: 176648, guid: 01b17ea39ca424f3c9f8d48e9a41b868, type: 2}
+  - {fileID: 197430, guid: 31564c84b736748628fb3b8b5b9f2df6, type: 2}
+  - {fileID: 119376, guid: 37b469f8cb3f24968872da3bee4102b1, type: 2}
+  - {fileID: 189840, guid: 3c4452e0889e34c1db0c85644194a625, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: LevelManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 106178}
+  m_IsPrefabParent: 1

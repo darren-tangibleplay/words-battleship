@@ -1,0 +1,37 @@
+<entries>
+<entry name="PROMPT_CANCEL">Annuleer</entry>
+<entry name="SETTINGS_RESET">RESET
+VOORUITGANG</entry>
+<entry name="HAVE_SPECIAL_TILES_HEADER">Heeft u voorbeeld spel tegels?</entry>
+<entry name="ACH_TITLE_complete2">compleet 2</entry>
+<entry name="PROMPT_CONTINUE">voortzetten</entry>
+<entry name="SETTINGS_REPORT">OPSPORING
+KWESTIE</entry>
+<entry name="SETTINGS_ACHIEVEMENTS">Prestaties</entry>
+<entry name="BEST_SCORE">Best: {0}</entry>
+<entry name="PROMPT_MENU">Menu</entry>
+<entry name="ACH_TITLE_completeall">Completionist</entry>
+<entry name="CLOSE_FANCY">DOORGAAN</entry>
+<entry name="PLAY_BUTTON">Spelen</entry>
+<entry name="SAMPLE_LEVEL1">Test Niveau 1</entry>
+<entry name="SAMPLE_LEVEL2">Test Niveau 2</entry>
+<entry name="SAMPLE_LEVEL3">Test Level 3</entry>
+<entry name="DO_NOT_TRANSLATE">DO_NOT_TRANSLATE</entry>
+<entry name="TITLE_WELCOME">Welkom</entry>
+<entry name="SETTINGS_BACK">Dichtbij</entry>
+<entry name="RESET_LEVEL">Je zult je voortgang op dit niveau te verliezen als je terug te keren naar het menuscherm.</entry>
+<entry name="SCORE_LABEL">partituur</entry>
+<entry name="ACH_TITLE_score1000">Score 1000</entry>
+<entry name="SETTINGS_HOME">Hoofdmenu</entry>
+<entry name="PROMPT_RESET">Reset</entry>
+<entry name="ACH_TEXT_completeall">Voltooi alle levels in het spel.</entry>
+<entry name="PREVIOUS_HIGH_SCORE">Uw hoge score: {0}</entry>
+<entry name="LEVEL_ENTER">Welkom bij
+{0}</entry>
+<entry name="SCORE_LABEL_HIGH_SCORE">Nieuwe topscore!</entry>
+<entry name="ACH_TEXT_complete2">Compleet 2 levels</entry>
+<entry name="PROMPT_REPLAY">Herhaling</entry>
+<entry name="RESET_ALL">Reset het spel en wist al uw vooruitgang?</entry>
+<entry name="SETTINGS_RESTART">Restart Level</entry>
+<entry name="ACH_TEXT_score1000">Hier krijg je een hoge score van 1000.</entry>
+</entries>
