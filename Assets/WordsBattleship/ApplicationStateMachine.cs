@@ -9,6 +9,12 @@ namespace Tangible.WordsBattleship {
         // PRAGMA MARK - Public Interface
         public void Init() {
             animator_.SetTrigger("Reset");
+
+            this.DoAfterFrame(() => {
+                if (ApplicationConstants.Instance.InitialState != ApplicationState.MainMenu) {
+                    animator_.CrossFadeInFixedTime(ApplicationConstants.Instance.InitialStateName, 0.0f);
+                }
+            });
         }
 
         public void Cleanup() {
