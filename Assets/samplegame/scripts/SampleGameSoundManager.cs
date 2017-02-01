@@ -1,11 +1,11 @@
-﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+﻿using UnityEngine;
 
 public class SampleGameSoundManager : BaseSoundManager {
-	
+
 	public static SampleGameSoundManager instance = null;
-				
+
 	// sounds needed always
 	public static readonly string BUTTON_CLICK_NAME = "button_click_01";
 	public static readonly string ACHIEVEMENT_NAME = "achievement_made";
@@ -25,7 +25,7 @@ public class SampleGameSoundManager : BaseSoundManager {
 	// to the clips themselves at the moment that we'd have to make more resilient if we wanted to load dynamically
 	AudioClip music_menu;
 	AudioClip music_game;
-	
+
 	void Awake () {
 		if (instance == null) {
 			instance = this;
@@ -40,9 +40,9 @@ public class SampleGameSoundManager : BaseSoundManager {
 		SetMusicMute(!Game.enableBackgroundMusic);
 
 		music_menu = (AudioClip)Resources.Load (asset_loader_.sound_base_path + MUSIC_MENU_NAME, typeof(AudioClip));
-		music_game = (AudioClip)Resources.Load (asset_loader_.sound_base_path + MUSIC_GAME_NAME, typeof(AudioClip));                                                                                                                                   
+		music_game = (AudioClip)Resources.Load (asset_loader_.sound_base_path + MUSIC_GAME_NAME, typeof(AudioClip));
 	}
-	
+
 
 
 	// cache any files specific to the level or mode you're in
@@ -60,7 +60,7 @@ public class SampleGameSoundManager : BaseSoundManager {
 		// cache always
 		CacheFile(BUTTON_CLICK_NAME);
 		CacheFile(ACHIEVEMENT_NAME);
-	
+
 	}
 
 	public void SelectAndPlayBackgroundMusic(string stateName, string levelName = null) {
@@ -74,5 +74,4 @@ public class SampleGameSoundManager : BaseSoundManager {
 	public void OnButtonClick() {
 		PlaySoundFile(BUTTON_CLICK_NAME);
 	}
-
 }

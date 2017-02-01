@@ -5,17 +5,17 @@ using Tangible.Shared;
 public class HomeState : GenericUnityMenuState {
 	public const string STATE_NAME = "home";
 
-	string level_name_;
-	Action on_complete_;
+	string levelName_;
+	Action onComplete_;
 	public HomeState (Action complete) : base(STATE_NAME, "prefabs/main_menu", SampleGameUIManager.instance) {
-		on_complete_ = complete;
+		onComplete_ = complete;
 	}
 
 	override protected void HandleButton(string title){
 		switch (title) {
 		case "play":
 			Game.StateMachine.PopState(HomeState.STATE_NAME);
-			Game.StateMachine.PushState(new LevelSelectState(on_complete_, Game.DisplayData.LevelSelected));
+			Game.StateMachine.PushState(new LevelSelectState(onComplete_, Game.DisplayData.LevelSelected));
 			break;
 		default:
 			Debug.LogError("unknown button title: " + title);
