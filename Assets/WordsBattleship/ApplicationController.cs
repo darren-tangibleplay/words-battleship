@@ -7,7 +7,6 @@ namespace Tangible.WordsBattleship {
     public class ApplicationController : Singleton<ApplicationController> {
         // PRAGMA MARK - Public Interface
         public void Init() {
-            Debug.LogWarning("hi");
             stateMachine_.Init();
         }
 
