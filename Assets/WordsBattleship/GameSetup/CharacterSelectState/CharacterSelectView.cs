@@ -13,24 +13,6 @@ namespace Tangible.WordsBattleship {
         public void Init(Action<Character> onCharacterSelected, Action onNextTapped) {
             onCharacterSelected_ = onCharacterSelected;
             onNextTapped_ = onNextTapped;
-
-            switch (GameSetup.CharacterSelectTarget) {
-                case GamePlayer.First:
-                {
-                    targetText_.text = "Player 1";
-                    break;
-                }
-                case GamePlayer.Second:
-                {
-                    targetText_.text = "Player 2";
-                    break;
-                }
-                default:
-                {
-                    targetText_.text = "INVALID PLAYER TARGET";
-                    break;
-                }
-            }
         }
 
 
@@ -50,7 +32,6 @@ namespace Tangible.WordsBattleship {
 
 
         // PRAGMA MARK - Internal
-        [SerializeField] private Text targetText_;
         [SerializeField] private Button nextButton_;
         [SerializeField] private GameObject characterBubblesContainer_;
 

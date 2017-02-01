@@ -9,33 +9,31 @@ using Tangible.Shared;
 namespace Tangible.WordsBattleship {
     public static class GameSetup {
         // PRAGMA MARK - Static Public Interface
-        public static event Action OnFirstPlayerCharacterChanged = delegate {};
-        public static event Action OnSecondPlayerCharacterChanged = delegate {};
-
+        public static event Action OnCharacterChanged = delegate {};
         public static event Action OnWordChanged = delegate {};
 
-        public static Character FirstPlayerCharacter {
-            get { return firstPlayerCharacter_; }
-            set {
-                if (firstPlayerCharacter_ == value) {
-                    return;
-                }
+        public static event Action OnCurrentPlayerChanged = delegate {};
 
-                firstPlayerCharacter_ = value;
-                OnFirstPlayerCharacterChanged.Invoke();
-            }
+        public static Character GetCharacterForPlayer(GamePlayer player) {
+            return playerCharacters_.GetValueOrDefault(player, defaultValue: null);
         }
 
-        public static Character SecondPlayerCharacter {
-            get { return secondPlayerCharacter_; }
-            set {
-                if (secondPlayerCharacter_ == value) {
-                    return;
-                }
-
-                secondPlayerCharacter_ = value;
-                OnSecondPlayerCharacterChanged.Invoke();
+        public static void SetCharacterForPlayer(GamePlayer player, Character character) {
+            Character oldCharacter = GetCharacterForPlayer(player);
+            if (oldCharacter == character) {
+                return;
             }
+
+            playerCharacters_[player] = character;
+            OnCharacterChanged.Invoke();
+        }
+
+        public static Character GetCharacterForCurrentPlayer() {
+            return GetCharacterForPlayer(CurrentPlayer);
+        }
+
+        public static void SetCharacterForCurrentPlayer(Character character) {
+            SetCharacterForPlayer(CurrentPlayer, character);
         }
 
         public static string GetWordForPlayer(GamePlayer player) {
@@ -52,14 +50,31 @@ namespace Tangible.WordsBattleship {
             OnWordChanged.Invoke();
         }
 
-        public static GamePlayer CharacterSelectTarget = GamePlayer.None;
-        public static GamePlayer WordSelectTarget = GamePlayer.None;
+        public static string GetWordForCurrentPlayer() {
+            return GetWordForPlayer(CurrentPlayer);
+        }
+
+        public static void SetWordForCurrentPlayer(string word) {
+            SetWordForPlayer(CurrentPlayer, word);
+        }
+
+        public static GamePlayer CurrentPlayer {
+            get { return currentPlayer_; }
+            set {
+                if (currentPlayer_ == value) {
+                    return;
+                }
+
+                currentPlayer_ = value;
+                OnCurrentPlayerChanged.Invoke();
+            }
+        }
 
 
         // PRAGMA MARK - Static Internal
-        private static Character firstPlayerCharacter_;
-        private static Character secondPlayerCharacter_;
-
+        private static Dictionary<GamePlayer, Character> playerCharacters_ = new Dictionary<GamePlayer, Character>();
         private static Dictionary<GamePlayer, string> playerWords_ = new Dictionary<GamePlayer, string>();
+
+        private static GamePlayer currentPlayer_;
     }
 }

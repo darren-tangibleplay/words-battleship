@@ -11,14 +11,15 @@ namespace Tangible.WordsBattleship {
         private WordSelectView wordSelectView_;
 
         protected sealed override void OnStateEntered() {
-            if (GameSetup.WordSelectTarget == GamePlayer.None) {
+            if (GameSetup.CurrentPlayer == GamePlayer.None) {
                 foreach (GamePlayer player in GamePlayerUtil.ValidPlayers) {
                     if (GameSetup.GetWordForPlayer(player) == null) {
-                        GameSetup.WordSelectTarget = player;
+                        GameSetup.CurrentPlayer = player;
+                        break;
                     }
                 }
 
-                if (GameSetup.WordSelectTarget == GamePlayer.None) {
+                if (GameSetup.CurrentPlayer == GamePlayer.None) {
                     ExitWordSelect();
                     return;
                 }
@@ -35,7 +36,7 @@ namespace Tangible.WordsBattleship {
                 wordSelectView_ = null;
             }
 
-            GameSetup.WordSelectTarget = GamePlayer.None;
+            GameSetup.CurrentPlayer = GamePlayer.None;
         }
 
         private bool HasValidWord() {

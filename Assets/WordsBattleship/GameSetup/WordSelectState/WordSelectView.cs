@@ -44,7 +44,7 @@ namespace Tangible.WordsBattleship {
         }
 
         private void HandleUpdate() {
-            string word = GameSetup.GetWordForPlayer(GameSetup.WordSelectTarget);
+            string word = GameSetup.GetWordForCurrentPlayer();
             foreach (char letter in Vision.AllNewLetters()) {
                 // append letter to current player word
                 word = word ?? "";
@@ -59,7 +59,7 @@ namespace Tangible.WordsBattleship {
                 word = word.Substring(ApplicationConstants.Instance.MaxWordLength);
             }
 
-            GameSetup.SetWordForPlayer(GameSetup.WordSelectTarget, word);
+            GameSetup.SetWordForCurrentPlayer(word);
         }
 
         private void HandleNextTapped() {
@@ -67,14 +67,14 @@ namespace Tangible.WordsBattleship {
         }
 
         private void HandleDeleteTapped() {
-            string word = GameSetup.GetWordForPlayer(GameSetup.WordSelectTarget);
+            string word = GameSetup.GetWordForCurrentPlayer();
             if (string.IsNullOrEmpty(word)) {
                 return;
             }
 
             word = word.WithLastCharacterRemoved();
 
-            GameSetup.SetWordForPlayer(GameSetup.WordSelectTarget, word);
+            GameSetup.SetWordForCurrentPlayer(word);
         }
     }
 }

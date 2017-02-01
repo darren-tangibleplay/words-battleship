@@ -15,6 +15,7 @@ namespace Tangible.WordsBattleship {
 
         public void Show() {
             Refresh(force: true);
+            RefreshCurrentPlayer(force: true);
             gameObject.SetActive(true);
         }
 
@@ -34,9 +35,13 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private Image firstCharacterImage_;
         [SerializeField] private Image secondCharacterImage_;
 
+        [Space]
+        [SerializeField] private GameObject firstPlayerSelectedContainer_;
+        [SerializeField] private GameObject secondPlayerSelectedContainer_;
+
         void Awake() {
-            GameSetup.OnFirstPlayerCharacterChanged += Refresh;
-            GameSetup.OnSecondPlayerCharacterChanged += Refresh;
+            GameSetup.OnCharacterChanged += Refresh;
+            GameSetup.OnCurrentPlayerChanged += RefreshCurrentPlayer;
         }
 
         // NOTE (darren): we use Start instead of Awake here
@@ -52,17 +57,30 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            if (GameSetup.FirstPlayerCharacter != null) {
-                firstCharacterImage_.sprite = GameSetup.FirstPlayerCharacter.MugShotSprite;
+            Character firstPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.First);
+            Character secondPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.Second);
+
+            if (firstPlayerCharacter != null) {
+                firstCharacterImage_.sprite = firstPlayerCharacter.MugShotSprite;
             } else {
                 firstCharacterImage_.sprite = null;
             }
 
-            if (GameSetup.SecondPlayerCharacter != null) {
-                secondCharacterImage_.sprite = GameSetup.SecondPlayerCharacter.MugShotSprite;
+            if (secondPlayerCharacter != null) {
+                secondCharacterImage_.sprite = secondPlayerCharacter.MugShotSprite;
             } else {
                 secondCharacterImage_.sprite = null;
             }
+        }
+
+        private void RefreshCurrentPlayer(bool force = false) {
+            // don't refresh if not active
+            if (!force && !gameObject.activeSelf) {
+                return;
+            }
+
+            firstPlayerSelectedContainer_.SetActive(GameSetup.CurrentPlayer == GamePlayer.First);
+            secondPlayerSelectedContainer_.SetActive(GameSetup.CurrentPlayer == GamePlayer.Second);
         }
     }
 }

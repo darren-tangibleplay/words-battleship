@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace Tangible.WordsBattleship {
     public enum GamePlayer {
-        None,
-        First,
-        Second,
+        None = 0,
+        First = 1,
+        Second = 2,
     }
 
     public static class GamePlayerUtil {
@@ -23,7 +23,7 @@ namespace Tangible.WordsBattleship {
 
 
         static GamePlayerUtil() {
-            AllPlayers = Enum.GetValues(typeof(GamePlayer)).ESelect(e => (GamePlayer)e).ToArray();
+            AllPlayers = Enum.GetValues(typeof(GamePlayer)).ESelect(e => (GamePlayer)e).OrderBy(e => e).ToArray();
             ValidPlayers = AllPlayers.Where(e => e != GamePlayer.None).ToArray();
         }
     }

@@ -35,7 +35,7 @@ namespace Tangible.WordsBattleship {
         private Dictionary<int, LetterBubble> letterBubbles_ = new Dictionary<int, LetterBubble>();
 
         private void Refresh() {
-            string word = GameSetup.GetWordForPlayer(GameSetup.WordSelectTarget);
+            string word = GameSetup.GetWordForCurrentPlayer();
             if (word == showingWord_) {
                 return;
             }
