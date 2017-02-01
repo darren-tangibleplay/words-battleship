@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Tangible.WordsBattleship {
     public enum GamePlayer {
+        None,
         First,
         Second,
     }
@@ -37,6 +38,8 @@ namespace Tangible.WordsBattleship {
                 OnSecondPlayerCharacterChanged.Invoke();
             }
         }
+
+        public static GamePlayer ChooseCharacterTarget = GamePlayer.None;
 
 
         // PRAGMA MARK - Static Internal

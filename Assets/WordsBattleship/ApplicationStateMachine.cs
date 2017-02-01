@@ -14,6 +14,14 @@ namespace Tangible.WordsBattleship {
         public void Cleanup() {
         }
 
+        public void ExitCurrent() {
+            animator_.SetTrigger("ExitCurrent");
+        }
+
+        public void ExitCharacterSelect() {
+            animator_.SetTrigger("ExitCharacterSelect");
+        }
+
         public void StartGameSetup() {
             animator_.SetTrigger("StartGameSetup");
         }
