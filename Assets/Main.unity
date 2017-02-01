@@ -639,76 +639,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824832666}
---- !u!1 &1017520200
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1017520204}
-  - 95: {fileID: 1017520203}
-  - 114: {fileID: 1017520202}
-  - 114: {fileID: 1017520201}
-  m_Layer: 0
-  m_Name: ApplicationController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1017520201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1017520200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9652a72ce05b415b93c0802295a37b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1017520202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1017520200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eec08e4649a94b9987e4b92644ddb5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1017520203
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1017520200}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a01a9e778d12b4c84bf3fe5e46ad23a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!4 &1017520204
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1017520200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
 --- !u!1 &1185587009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,3 +1939,45 @@ MonoBehaviour:
   genericPromoPrefab: {fileID: 108084, guid: 037394ec931a74ff1ba5e3b8251f6361, type: 2}
   uiManager: {fileID: 1530270533}
   dlManager: {fileID: 1222975978}
+--- !u!1001 &2039141037
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -130.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012029801322, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 174e4fb78aac64e5db3ba8c0f8957a29, type: 2}
+  m_IsPrefabParent: 0

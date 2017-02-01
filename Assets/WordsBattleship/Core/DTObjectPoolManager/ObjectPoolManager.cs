@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DTObjectPoolManager {
-    public class ObjectPoolManager : Singleton<ObjectPoolManager> {
+    public partial class ObjectPoolManager : Singleton<ObjectPoolManager> {
         // PRAGMA MARK - Static
         public static event Action<GameObject> OnGameObjectCreated = delegate {};
 
@@ -13,7 +13,8 @@ namespace DTObjectPoolManager {
                 prefabName = typeof(T).Name;
             }
 
-            return ObjectPoolManager.Instance.CreateInternal<T>(prefabName, parent, worldPositionStays);
+            GameObject instantiatedPrefab =  ObjectPoolManager.Create(prefabName, parent, worldPositionStays);
+            return instantiatedPrefab.GetRequiredComponent<T>();
         }
 
         public static GameObject Create(string prefabName, GameObject parent = null, bool worldPositionStays = false) {
@@ -32,10 +33,6 @@ namespace DTObjectPoolManager {
         // PRAGMA MARK - Internal
         private HashSet<GameObject> _objectsBeingCleanedUp = new HashSet<GameObject>();
         private Dictionary<string, Stack<GameObject>> _objectPools = new Dictionary<string, Stack<GameObject>>();
-        private T CreateInternal<T>(string prefabName, GameObject parent = null, bool worldPositionStays = false) where T : MonoBehaviour {
-            GameObject instantiatedPrefab = this.CreateInternal(prefabName, parent, worldPositionStays);
-            return instantiatedPrefab.GetRequiredComponent<T>();
-        }
 
         private GameObject CreateInternal(string prefabName, GameObject parent = null, bool worldPositionStays = false) {
             prefabName = prefabName.ToLower();

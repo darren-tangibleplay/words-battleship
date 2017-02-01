@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tangible;
+using Tangible.Game;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class Game : GameController {
 	private const float SAVE_INTERVAL_SECONDS = 60f;
-	
+
 	public static Game singleton { get;private set;}
 
     #if UNITY_EDITOR
@@ -42,7 +43,7 @@ public class Game : GameController {
 
 	public static bool enableHome = true;
 	public static bool enableRestartLevel = false;
-	
+
 	[SerializeField]
 	Button settings_button_;
 
@@ -78,7 +79,7 @@ public class Game : GameController {
 	}
 
 
-	
+
 	enum SettingsButtonState {
 		INACTIVE,
 		ACTIVE,
@@ -95,7 +96,7 @@ public class Game : GameController {
 	static public bool EnableLineHelper {
         get { return enableVisionLineHelper; }
 	}
-	
+
     private SelectorController controller_;
 
 	static public Deck Deck {
@@ -112,11 +113,11 @@ public class Game : GameController {
 
 	private StateMachine state_machine_;
     static public StateMachine StateMachine {
-        get {  
+        get {
 			if (singleton == null || singleton.state_machine_ == null) {
 				return null;
 			}
-			return singleton.state_machine_; 
+			return singleton.state_machine_;
 		}
     }
 
@@ -125,7 +126,7 @@ public class Game : GameController {
 			if (singleton == null || singleton.level_manager_ == null) {
 				return null;
 			}
-			return singleton.level_manager_.Level; 
+			return singleton.level_manager_.Level;
 		}
     }
 
@@ -134,7 +135,7 @@ public class Game : GameController {
 
     static public SaveData SaveData { get { return singleton.player_state_.SaveData; } }
     static public SaveData DisplayData { get { return singleton.display_data_; } }
-	
+
 	private LevelManager level_manager_;
     static public LevelManager LevelManager {
         get { return singleton.level_manager_; }
@@ -175,8 +176,8 @@ public class Game : GameController {
 
 		RegisterForPush(2);
 	}
-	
-	override protected void Start() { 
+
+	override protected void Start() {
 		base.Start();
 
         // Disable screen dimming
@@ -187,7 +188,7 @@ public class Game : GameController {
 		// See MigratePlayerPrefs function in Tangram
 
 		player_state_.Init();
-        
+
         controller_ = GetComponent<SelectorController>();
         if (controller_ == null) {
             Debug.LogError("A SelectorController must be attached to the current object");
@@ -197,12 +198,12 @@ public class Game : GameController {
         transition_manager_ = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TransitionManager>();
 
         event_processor_ = gameObject.AddComponent<EventProcessor>();
-        
+
 		controller_.Register(0, processEvent);
 
         state_machine_ = gameObject.AddComponent<StateMachine>();
         state_machine_.onStateChange = HandleStateChange;
-        
+
         initial_orthographic_size_ = Camera.main.orthographicSize;
 
 		AchievementManager.instance.Init(SectionId.samplegame);
@@ -216,9 +217,9 @@ public class Game : GameController {
 		});
 
 		AddAchievementListeners ();
-		
+
 		UIManager.OnUIButton += OnUIButtonClick;
-		
+
 		RegisterURLDelegate();
 
 		state_machine_.PushState(new StartUpState());
@@ -227,7 +228,7 @@ public class Game : GameController {
 	override protected void OnLowMemoryWarning() {
 		SampleGameAssetLoader.instance.UnloadAssets();
 	}
-	
+
 	// removing achievements for the list for functionality that is currently disabled
 	private void RemoveUnusedAchievements() {
 
@@ -238,44 +239,44 @@ public class Game : GameController {
 
 		AchievementManager.instance.LoadProgress(currentProfileId);
 		LoadPlayerState();
-		
+
 		ProfileManager.instance.onProfileSelect += HandleProfileSelection;
 	}
 
 	public void OnUIButtonClick(GameObject obj = null) {
 		SampleGameSoundManager.instance.OnButtonClick();
 	}
-		
+
 	public void AddAchievementListeners() {
 		foreach (Achievement a in AchievementManager.instance.GetAchievements()) {
 			a.OnUpdated += ProcessAchievement;
 		}
-		
-        if (UIManager.overlay != null) {     
+
+        if (UIManager.overlay != null) {
 			AchievementNotifier notifier = UIManager.overlay.GetComponent<AchievementNotifier> ();
     		notifier.Init ();
-    		
+
     		// TODO: open menu, zoom to achievement
     		notifier.OnAchievementTap += JumpToAchievements;
     		notifier.OnAchievementShown += OnAchievementShown;
         }
 	}
-			
+
 	void HandleProfileSelection(Profile selected, Profile previous) {
 		string selectedId = selected != null ? selected.id : null;
 		if (selectedId != currentProfileId) {
 			if (currentProfileId != null) {
 				Debug.Log("[Game] HandleProfileChange: from: " + currentProfileId + " to: " + selectedId);
-				
+
 				// save previous profile data
 				AchievementManager.instance.SaveProgress(currentProfileId);
 				SampleGamePlayerState.stateDirty = true;
 				SavePlayerState(true);
 
 			}
-			
+
 			currentProfileId = selectedId;
-			
+
 			// load new profile data
 			AchievementManager.instance.ResetAchievements();
 			AchievementManager.instance.LoadProgress(currentProfileId);
@@ -287,9 +288,9 @@ public class Game : GameController {
 			LoadPlayerState();
 		}
 	}
-	
+
 	private bool saveAchievements_ = false;
-	
+
 	private void ProcessAchievement(Achievement a) {
 		OnAchievementsChanged ();
 
@@ -304,14 +305,14 @@ public class Game : GameController {
 			StartCoroutine(SaveAchievements());
 		}
 	}
-	
+
 	private IEnumerator SaveAchievements() {
 		yield return new WaitForEndOfFrame ();
-		
+
 		if (saveLoad) {
 			AchievementManager.instance.SaveProgress (currentProfileId);
 		}
-		
+
 		saveAchievements_ = false;
 	}
 
@@ -328,7 +329,7 @@ public class Game : GameController {
 
 		GoToMainMenuState(null);
 	}
-		
+
 	private void StateReady(string playerId) {
 		playerStateLoaded = true;
 		loadedProfileId = currentProfileId;
@@ -352,7 +353,7 @@ public class Game : GameController {
         }
         #endif
     }
-    
+
 	public void LoadPlayerState() {
 		player_state_.Load(currentProfileId, StateReady);
 	}
@@ -365,15 +366,15 @@ public class Game : GameController {
 		}
 
 		if (!force) {
-			TimeSpan interval = new TimeSpan(DateTime.UtcNow.Ticks - player_state_.SaveData.last_saved_timestamp); 
+			TimeSpan interval = new TimeSpan(DateTime.UtcNow.Ticks - player_state_.SaveData.last_saved_timestamp);
 			if (interval.TotalSeconds < SAVE_INTERVAL_SECONDS) {
 				return;
 			}
 		}
-		
+
 		player_state_.CheckSave (currentProfileId);
 	}
-	
+
 	public void HideSettingsButton() {
 		settings_button_state_ = SettingsButtonState.INACTIVE;
 		Go.killAllTweensWithTarget (settings_button_.image);
@@ -381,7 +382,7 @@ public class Game : GameController {
 			settings_button_.gameObject.SetActive(false);
 		}));
 	}
-	
+
 	public void ShowSettingsButton() {
 		settings_button_state_ = SettingsButtonState.ACTIVE;
 		Go.killAllTweensWithTarget (settings_button_.image);
@@ -390,25 +391,25 @@ public class Game : GameController {
 			StartCoroutine(FadeOutSettingsButton());
 		}));
 	}
-	
+
 	IEnumerator FadeOutSettingsButton() {
 		// keep settings button active for a while and then slowly fade it out
 		yield return new WaitForSeconds(5.0f);
-		
+
 		if (settings_button_state_ == SettingsButtonState.ACTIVE) {
 			Go.killAllTweensWithTarget (settings_button_.image);
 			settings_button_state_ = SettingsButtonState.CLICK_TO_SHOW;
 			Go.to (settings_button_.image, 5.0f, new GoTweenConfig ().colorProp ("color", TweenHelper.FadedColor (settings_button_color_, 0)));
 		}
 	}
-	
+
 	public void OnSettingsButton() {
 		if (settings_button_state_ != SettingsButtonState.INACTIVE) {
 			UIManager.HandleButtonClick(settings_button_.gameObject);
 			OpenSettingsMenu ();
-		} 
+		}
 	}
-	
+
 	public void OpenSettingsMenu () {
 		if (state_machine_.currentState.name != SettingsState.STATE_NAME) {
 			state_machine_.PushState (new SettingsState ());
@@ -418,11 +419,11 @@ public class Game : GameController {
 	public void OnAchievementShown(Achievement which = null) {
 		SampleGameSoundManager.instance.PlaySoundFile(SampleGameSoundManager.ACHIEVEMENT_NAME);
 	}
-	
+
 	public void JumpToAchievements(Achievement which = null) {
 		OpenAchievements(which);
 	}
-	
+
 	public void OpenAchievements(Achievement which = null) {
 		// removing achievements state if we're already showing it to avoid weird issues with the back
 		// button if you click on an achievement notif when the achievements screen is already showing
@@ -473,10 +474,10 @@ public class Game : GameController {
 		if (level_name != null) {
 			state_machine_.PushState (new LevelSelectState (OnLevelSelected, level_name));
 		} else {
-			state_machine_.PushState (new HomeState (OnLevelSelected));
+			state_machine_.PushState (new DependencyState());
 		}
 	}
-	
+
 	void OnLevelSelected() {
 		SampleGameSoundManager.instance.StopBackgroundMusic ();
 
@@ -487,7 +488,7 @@ public class Game : GameController {
         controller_.AnimateToOriginal();
 		state_machine_.PushState(new PlayState(OnPlayDone));
 	}
-	
+
 	void OnPlayDone() {
 		state_machine_.PopState(PlayState.STATE_NAME);
         state_machine_.PushState(new LevelSelectState(OnLevelSelected, Level.LevelName));
@@ -501,7 +502,7 @@ public class Game : GameController {
 
 		// check for saving the game on state changes
 		SavePlayerState (true);
-    } 
+    }
 
     public void DebugSolve() {
         if (cheat) {
@@ -514,15 +515,15 @@ public class Game : GameController {
             }
         }
     }
-	
+
 	public void OnLevelLoaded() {
-        
+
 	}
 
     public void OnLevelUnloaded() {
-        
+
     }
-	
+
     Tangible.Event processEvent(Tangible.Event e) {
         debug_frame_vision++;
         return event_processor_.processEvent(e);
@@ -534,7 +535,7 @@ public class Game : GameController {
 		SavePlayerState (false);
 
 		debug_frame_game++;
-		
+
 		// trigger a screen click if the user touches the screen and the scrim is not up, in order to determine
 		// if the user touches the screen for things like showing the settings button
 		if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && !SampleGameUIManager.instance.input_blocked) {
