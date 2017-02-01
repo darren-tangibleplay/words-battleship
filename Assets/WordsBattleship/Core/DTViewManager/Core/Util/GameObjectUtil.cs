@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DTViewManager {
+namespace DTViewManager.Internal {
     public static class GameObjectUtil {
         public static GameObject FindRequired(string name) {
             GameObject obj = GameObject.Find(name);

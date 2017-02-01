@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace DTObjectPoolManager {
+namespace DTObjectPoolManager.Internal {
     public static class SingletonLoader {
         [RuntimeInitializeOnLoadMethod]
         private static void InitializeSingletons() {

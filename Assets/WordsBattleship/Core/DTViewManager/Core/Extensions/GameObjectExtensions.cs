@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DTViewManager {
+namespace DTViewManager.Internal {
     public static class GameObjectExtensions {
         public static string FullName(this GameObject g) {
             string name = g.name;

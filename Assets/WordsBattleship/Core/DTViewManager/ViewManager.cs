@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using DTObjectPoolManager;
+using DTViewManager.Internal;
 
 namespace DTViewManager {
     public class ViewManager : MonoBehaviour {

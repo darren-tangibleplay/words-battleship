@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using DTObjectPoolManager.Internal;
+
 namespace DTObjectPoolManager {
     public class RecyclablePrefab : MonoBehaviour {
         public Action<RecyclablePrefab> OnCleanup = delegate {};

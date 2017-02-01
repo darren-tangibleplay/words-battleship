@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DTViewManager.Internal;
+
 namespace DTViewManager {
     public static class ViewManagerLocator {
         // PRAGMA MARK - Static Public Interface

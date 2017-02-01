@@ -9,5 +9,7 @@ namespace Tangible.WordsBattleship {
 
         // PRAGMA MARK - Public Interface
         public Character[] AllCharacters;
+
+        public int MaxWordLength = 10;
     }
 }

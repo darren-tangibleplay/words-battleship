@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DTObjectPoolManager {
+namespace DTObjectPoolManager.Internal {
     public static class DictionaryExtensions {
         public static T PickRandomWeighted<T>(this IDictionary<T, int> source) {
             if (source.Count <= 0) {

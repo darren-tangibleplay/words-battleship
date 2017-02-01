@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DTViewManager {
+namespace DTViewManager.Internal {
     public static class MonoBehaviourExtensions {
         public static T GetRequiredComponent<T>(this MonoBehaviour m) {
             return m.gameObject.GetRequiredComponent<T>();

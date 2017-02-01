@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DTObjectPoolManager.Internal;
+
 namespace DTObjectPoolManager {
     public static class PrefabNameRouter {
         // PRAGMA MARK - Static

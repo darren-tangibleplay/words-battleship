@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DTObjectPoolManager {
+namespace DTObjectPoolManager.Internal {
     public static class GameObjectExtensions {
         public static string FullName(this GameObject g) {
             string name = g.name;
@@ -151,10 +151,6 @@ namespace DTObjectPoolManager {
 
         public static void DestroyAllChildren(this GameObject g, bool immediate = false) {
             g.transform.DestroyAllChildren(immediate);
-        }
-
-        public static void RecycleAllChildren(this GameObject g, bool worldPositionStays = false) {
-            g.transform.RecycleAllChildren(worldPositionStays);
         }
 
         public static IEnumerable<GameObject> GetChildren(this GameObject g) {

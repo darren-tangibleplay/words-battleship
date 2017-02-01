@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DTViewManager {
+namespace DTViewManager.Internal {
     public static class TransformExtensions {
         public static T GetComponentInParent<T>(this Transform transform, bool required = true) {
             T found = transform.gameObject.GetComponentInParent<T>();

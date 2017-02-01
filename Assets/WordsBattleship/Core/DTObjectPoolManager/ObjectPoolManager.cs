@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DTObjectPoolManager.Internal;
+
 namespace DTObjectPoolManager {
     public partial class ObjectPoolManager : Singleton<ObjectPoolManager> {
         // PRAGMA MARK - Static
