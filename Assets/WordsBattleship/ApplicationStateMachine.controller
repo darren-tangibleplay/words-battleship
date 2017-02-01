@@ -227,7 +227,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Choose Word
+  m_Name: Word Select
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -276,7 +276,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Choose Character
+  m_Name: Character Select
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
