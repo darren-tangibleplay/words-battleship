@@ -21,7 +21,7 @@ GameObject:
   - 224: {fileID: 224000012960059854}
   - 114: {fileID: 114000013327925562}
   m_Layer: 0
-  m_Name: ChooseCharacterView
+  m_Name: CharacterSelectView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

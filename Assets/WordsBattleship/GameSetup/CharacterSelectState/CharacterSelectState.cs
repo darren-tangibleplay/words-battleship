@@ -6,16 +6,16 @@ using DTAnimatorStateMachine;
 using DTObjectPoolManager;
 
 namespace Tangible.WordsBattleship {
-    public class ChooseCharacterState : DTStateMachineBehaviour<ApplicationStateMachine> {
+    public class CharacterSelectState : DTStateMachineBehaviour<ApplicationStateMachine> {
         // PRAGMA MARK - Internal
-        private ChooseCharacterView chooseCharacterView_;
+        private CharacterSelectView CharacterSelectView_;
 
         protected sealed override void OnStateEntered() {
-            if (GameSetup.ChooseCharacterTarget == GamePlayer.None) {
+            if (GameSetup.CharacterSelectTarget == GamePlayer.None) {
                 if (GameSetup.FirstPlayerCharacter == null) {
-                    GameSetup.ChooseCharacterTarget = GamePlayer.First;
+                    GameSetup.CharacterSelectTarget = GamePlayer.First;
                 } else if (GameSetup.SecondPlayerCharacter == null) {
-                    GameSetup.ChooseCharacterTarget = GamePlayer.Second;
+                    GameSetup.CharacterSelectTarget = GamePlayer.Second;
                 } else {
                     ExitCharacterSelect();
                     return;
@@ -23,21 +23,21 @@ namespace Tangible.WordsBattleship {
             }
 
             GameSetupView.Instance.Show();
-            chooseCharacterView_ = ObjectPoolManager.CreateView<ChooseCharacterView>(viewManager: GameSetupView.Instance.SubViewManager);
-            chooseCharacterView_.Init(HandleCharacterSelected, HandleNextTapped);
+            CharacterSelectView_ = ObjectPoolManager.CreateView<CharacterSelectView>(viewManager: GameSetupView.Instance.SubViewManager);
+            CharacterSelectView_.Init(HandleCharacterSelected, HandleNextTapped);
         }
 
         protected sealed override void OnStateExited() {
-            if (chooseCharacterView_ != null) {
-                ObjectPoolManager.Recycle(chooseCharacterView_);
-                chooseCharacterView_ = null;
+            if (CharacterSelectView_ != null) {
+                ObjectPoolManager.Recycle(CharacterSelectView_);
+                CharacterSelectView_ = null;
             }
 
-            GameSetup.ChooseCharacterTarget = GamePlayer.None;
+            GameSetup.CharacterSelectTarget = GamePlayer.None;
         }
 
         private void HandleCharacterSelected(Character character) {
-            switch (GameSetup.ChooseCharacterTarget) {
+            switch (GameSetup.CharacterSelectTarget) {
                 case GamePlayer.First:
                 {
                     GameSetup.FirstPlayerCharacter = character;
@@ -58,7 +58,7 @@ namespace Tangible.WordsBattleship {
         }
 
         private bool HasCharacterSelected() {
-            switch (GameSetup.ChooseCharacterTarget) {
+            switch (GameSetup.CharacterSelectTarget) {
                 case GamePlayer.First:
                 {
                     return GameSetup.FirstPlayerCharacter != null;

@@ -8,13 +8,13 @@ using DTViewManager;
 using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
-    public class ChooseCharacterView : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
+    public class CharacterSelectView : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
         public void Init(Action<Character> onCharacterSelected, Action onNextTapped) {
             onCharacterSelected_ = onCharacterSelected;
             onNextTapped_ = onNextTapped;
 
-            switch (GameSetup.ChooseCharacterTarget) {
+            switch (GameSetup.CharacterSelectTarget) {
                 case GamePlayer.First:
                 {
                     targetText_.text = "Player 1";

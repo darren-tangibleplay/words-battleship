@@ -39,7 +39,7 @@ namespace Tangible.WordsBattleship {
             }
         }
 
-        public static GamePlayer ChooseCharacterTarget = GamePlayer.None;
+        public static GamePlayer CharacterSelectTarget = GamePlayer.None;
 
 
         // PRAGMA MARK - Static Internal
