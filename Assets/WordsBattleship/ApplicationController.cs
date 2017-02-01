@@ -3,22 +3,24 @@ using Tangible.Shared;
 using UnityEngine;
 
 namespace Tangible.WordsBattleship {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(ApplicationStateMachine))]
     public class ApplicationController : Singleton<ApplicationController> {
         // PRAGMA MARK - Public Interface
-        public void Start() {
-            _animator.SetTrigger("Reset");
+        public void Init() {
+            Debug.LogWarning("hi");
+            stateMachine_.Init();
         }
 
-        public void Stop() {
+        public void Cleanup() {
+            stateMachine_.Cleanup();
         }
 
 
         // PRAGMA MARK - Internal
-        private Animator _animator;
+        private ApplicationStateMachine stateMachine_;
 
         void Awake() {
-            _animator = GetRequiredComponent<Animator>();
+            stateMachine_ = this.GetRequiredComponent<ApplicationStateMachine>();
         }
     }
 }

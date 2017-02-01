@@ -115,7 +115,7 @@ namespace DTObjectPoolManager {
                 return null;
             }
 
-            GameObject instantiatedPrefab = GameObject.Create(prefab);
+            GameObject instantiatedPrefab = GameObject.Instantiate(prefab);
 
             RecyclablePrefab recycleData = instantiatedPrefab.GetOrAddComponent<RecyclablePrefab>();
             recycleData.prefabName = prefabName;

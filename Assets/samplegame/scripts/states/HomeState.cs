@@ -2,6 +2,8 @@ using System;
 using Tangible.Shared;
 ﻿using UnityEngine;
 
+using Tangible.Game;
+
 public class HomeState : GenericUnityMenuState {
 	public const string STATE_NAME = "home";
 
@@ -15,7 +17,7 @@ public class HomeState : GenericUnityMenuState {
 		switch (title) {
 		case "play":
 			Game.StateMachine.PopState(HomeState.STATE_NAME);
-			Game.StateMachine.PushState(new LevelSelectState(onComplete_, Game.DisplayData.LevelSelected));
+			Game.StateMachine.PushState(new DependencyState());
 			break;
 		default:
 			Debug.LogError("unknown button title: " + title);
@@ -39,6 +41,7 @@ public class HomeState : GenericUnityMenuState {
 	}
 
 	override public void OnExit() {
+		AccountProfileWidget.Hide();
 		PromotionController.Hide();
 		SampleGameUIManager.instance.BuildVersionButton.gameObject.SetActive (false);
 		base.OnExit();

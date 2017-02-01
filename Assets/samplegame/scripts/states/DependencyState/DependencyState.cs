@@ -13,13 +13,13 @@ namespace Tangible.Game {
         override public void OnPush() {
             base.OnPush();
 
-            Tangible.WordsBattleship.ApplicationController.Instance.Start();
+            Tangible.WordsBattleship.ApplicationController.Instance.Init();
         }
 
         override public void OnPop() {
             base.OnPop();
 
-            Tangible.WordsBattleship.ApplicationController.Instance.Stop();
+            Tangible.WordsBattleship.ApplicationController.Instance.Cleanup();
         }
 
         override public void OnEnter() {

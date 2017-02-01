@@ -361,7 +361,8 @@ PlayerSettings:
   psp2UseDebugIl2cppLibs: 0
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    4: DT_COMMAND_PALETTE
   metroPackageName: words-battleship
   metroPackageVersion: 
   metroCertificatePath: 
