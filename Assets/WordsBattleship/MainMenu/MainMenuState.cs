@@ -15,6 +15,7 @@ namespace Tangible.WordsBattleship {
 
         protected sealed override void OnStateEntered() {
             mainMenu_ = ObjectPoolManager.CreateView<MainMenu>();
+            mainMenu_.Init(StartGameSetup);
         }
 
         protected sealed override void OnStateExited() {
@@ -25,6 +26,10 @@ namespace Tangible.WordsBattleship {
         }
 
         protected sealed override void OnStateUpdated() {
+        }
+
+        private void StartGameSetup() {
+            StateMachine_.StartGameSetup();
         }
     }
 }

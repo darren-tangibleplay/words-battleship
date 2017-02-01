@@ -14,6 +14,10 @@ namespace Tangible.WordsBattleship {
         public void Cleanup() {
         }
 
+        public void StartGameSetup() {
+            animator_.SetTrigger("StartGameSetup");
+        }
+
 
         // PRAGMA MARK - Internal
         private Animator animator_;
