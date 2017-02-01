@@ -10,9 +10,6 @@ namespace Tangible.WordsBattleship {
         // PRAGMA MARK - Internal
         private MainMenu mainMenu_;
 
-        protected sealed override void OnInitialized() {
-        }
-
         protected sealed override void OnStateEntered() {
             mainMenu_ = ObjectPoolManager.CreateView<MainMenu>();
             mainMenu_.Init(StartGameSetup);
@@ -23,9 +20,6 @@ namespace Tangible.WordsBattleship {
                 ObjectPoolManager.Recycle(mainMenu_);
                 mainMenu_ = null;
             }
-        }
-
-        protected sealed override void OnStateUpdated() {
         }
 
         private void StartGameSetup() {

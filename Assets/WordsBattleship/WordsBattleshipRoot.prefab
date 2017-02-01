@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012029801322}
   m_Layer: 0
-  m_Name: WordsBattleship
+  m_Name: WordsBattleshipRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eec08e4649a94b9987e4b92644ddb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  constants_: {fileID: 11400000, guid: 646270fafa2b04c5b9798347880118d8, type: 2}
 --- !u!114 &114000011568428474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,6 +394,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subViewManager_: {fileID: 114000012772237996}
+  firstCharacterImage_: {fileID: 114000012815475182}
+  secondCharacterImage_: {fileID: 114000013923544182}
 --- !u!222 &222000010840047580
 CanvasRenderer:
   m_ObjectHideFlags: 1

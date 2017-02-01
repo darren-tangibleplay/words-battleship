@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0066f108a99cd4c76b46d3a75d8f6664, type: 3}
+  m_Name: PizzaCo
+  m_EditorClassIdentifier: 
+  name_: Pizza
+  mugShotSprite_: {fileID: 21300000, guid: f198d06a35f254247992360d863ba478, type: 3}
+  viewPrefabName_: PizzaView
+  gamePrefabName_: PizzaGame

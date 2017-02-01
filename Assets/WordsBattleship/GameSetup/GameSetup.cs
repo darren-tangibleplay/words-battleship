@@ -4,10 +4,15 @@ using System.Collections;
 using UnityEngine;
 
 namespace Tangible.WordsBattleship {
+    public enum GamePlayer {
+        First,
+        Second,
+    }
+
     public static class GameSetup {
         // PRAGMA MARK - Static Public Interface
-        public static event Action OnFirstPlayerCharacterChanged;
-        public static event Action OnSecondPlayerCharacterChanged;
+        public static event Action OnFirstPlayerCharacterChanged = delegate {};
+        public static event Action OnSecondPlayerCharacterChanged = delegate {};
 
         public static Character FirstPlayerCharacter {
             get { return firstPlayerCharacter_; }

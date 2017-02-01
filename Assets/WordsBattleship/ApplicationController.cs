@@ -16,9 +16,17 @@ namespace Tangible.WordsBattleship {
 
 
         // PRAGMA MARK - Internal
+        [SerializeField] private ApplicationConstants constants_;
+
         private ApplicationStateMachine stateMachine_;
 
         void Awake() {
+            if (constants_ == null) {
+                Debug.LogError("No ApplicationConstants in ApplicationController - can't start game!");
+                return;
+            }
+
+            ApplicationConstants.Instance = constants_;
             stateMachine_ = this.GetRequiredComponent<ApplicationStateMachine>();
         }
     }
