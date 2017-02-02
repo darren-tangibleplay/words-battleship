@@ -14,6 +14,13 @@ namespace Tangible.WordsBattleship {
 
         public static event Action OnCurrentPlayerChanged = delegate {};
 
+        public static void Clear() {
+            playerCharacters_.Clear();
+            playerWords_.Clear();
+
+            currentPlayer_ = GamePlayer.None;
+        }
+
         public static Character GetCharacterForPlayer(GamePlayer player) {
             return playerCharacters_.GetValueOrDefault(player, defaultValue: null);
         }

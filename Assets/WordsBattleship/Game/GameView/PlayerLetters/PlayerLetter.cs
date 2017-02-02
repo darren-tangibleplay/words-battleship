@@ -37,6 +37,11 @@ namespace Tangible.WordsBattleship {
                 ObjectPoolManager.Recycle(letterBubble_);
                 letterBubble_ = null;
             }
+
+            if (canvasGroup_ != null) {
+                canvasGroup_.alpha = 1.0f;
+                canvasGroup_ = null;
+            }
         }
 
 

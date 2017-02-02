@@ -8,7 +8,7 @@ namespace Tangible.WordsBattleship {
     public class ApplicationStateMachine : MonoBehaviour {
         // PRAGMA MARK - Public Interface
         public void Init() {
-            animator_.SetTrigger("Reset");
+            GoToMainMenu();
 
             this.DoAfterFrame(() => {
                 if (ApplicationConstants.Instance.InitialState != ApplicationState.MainMenu) {
@@ -38,6 +38,11 @@ namespace Tangible.WordsBattleship {
 
         public void StartGame() {
             animator_.SetTrigger("StartGame");
+        }
+
+        public void GoToMainMenu() {
+            animator_.SetTrigger("Reset");
+            GameSetup.Clear();
         }
 
 

@@ -40,6 +40,10 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
+            if (word == null) {
+                word = "";
+            }
+
             placeholderContainer_.SetActive(string.IsNullOrEmpty(word));
             for (int i = 0; i < word.Length; i++) {
                 char letter = word[i];

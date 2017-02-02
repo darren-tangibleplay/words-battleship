@@ -30,14 +30,13 @@ namespace Tangible.WordsBattleship {
             Recycle3DView();
             game3DView_ = ObjectPoolManager.Create<Game3DView>();
             game3DView_.Init(renderTexture_);
-
-            gameObject.SetActive(true);
         }
 
         public void Hide() {
             Recycle3DView();
 
-            gameObject.SetActive(false);
+            ObjectPoolManager.Recycle(gameObject);
+            instance_ = null;
         }
 
 

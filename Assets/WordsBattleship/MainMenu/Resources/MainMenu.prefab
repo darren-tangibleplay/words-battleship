@@ -277,7 +277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114000012879017872}
-        m_MethodName: PlayHumanVsAI
+        m_MethodName: PlayHumanVsHuman
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

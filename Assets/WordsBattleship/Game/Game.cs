@@ -76,14 +76,28 @@ namespace Tangible.WordsBattleship {
         }
 
         public static bool DidCurrentPlayerGuessAllLetters() {
-            string word = GetWordForPlayer(CurrentPlayer);
+            return DidPlayerGuessAllLetters(CurrentPlayer);
+        }
+
+        public static bool DidPlayerGuessAllLetters(GamePlayer player) {
+            string word = GetWordForPlayer(player);
             foreach (char c in word) {
-                if (!DidCurrentPlayerAlreadyGuessLetter(c)) {
+                if (!DidPlayerAlreadyGuessLetter(player, c)) {
                     return false;
                 }
             }
 
             return true;
+        }
+
+        public static GamePlayer GetWinner() {
+            foreach (var player in GamePlayerUtil.ValidPlayers) {
+                if (DidPlayerGuessAllLetters(player)) {
+                    return player;
+                }
+            }
+
+            return GamePlayer.None;
         }
 
         public static GamePlayer CurrentPlayer {
