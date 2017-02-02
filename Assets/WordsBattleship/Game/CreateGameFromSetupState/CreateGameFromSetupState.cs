@@ -17,8 +17,5 @@ namespace Tangible.WordsBattleship {
                 StateMachine_.StartGameSetup();
             }
         }
-
-        protected sealed override void OnStateExited() {
-        }
     }
 }

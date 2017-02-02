@@ -24,6 +24,10 @@ namespace Tangible.WordsBattleship {
             animator_.SetTrigger("ExitCurrent");
         }
 
+        public void ExitWinner() {
+            animator_.SetTrigger("ExitWinner");
+        }
+
         public void ExitCharacterSelect() {
             animator_.SetTrigger("ExitCharacterSelect");
         }

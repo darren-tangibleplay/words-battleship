@@ -46,7 +46,7 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            playerWords_[player] = word;
+            playerWords_[player] = word.ToLower();
             OnWordChanged.Invoke();
         }
 

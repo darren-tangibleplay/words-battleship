@@ -13,6 +13,12 @@ namespace Tangible.WordsBattleship {
     public class ApplicationConstants : ScriptableObject {
         public static ApplicationConstants Instance;
 
+        public static readonly char[] kLetters = new char[] {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+        };
+
+
         // PRAGMA MARK - Public Interface
         [Header("Debug")]
         public ApplicationState InitialState = ApplicationState.MainMenu;
