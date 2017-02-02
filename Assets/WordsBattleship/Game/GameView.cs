@@ -27,12 +27,16 @@ namespace Tangible.WordsBattleship {
         }
 
         public void Show() {
-            Refresh(force: true);
-            RefreshCurrentPlayer(force: true);
+            Recycle3DView();
+            game3DView_ = ObjectPoolManager.Create<Game3DView>();
+            game3DView_.Init(renderTexture_);
+
             gameObject.SetActive(true);
         }
 
         public void Hide() {
+            Recycle3DView();
+
             gameObject.SetActive(false);
         }
 
@@ -40,52 +44,15 @@ namespace Tangible.WordsBattleship {
         // PRAGMA MARK - Internal
         [Header("Outlets")]
         [SerializeField] private ViewManager subViewManager_;
+        [SerializeField] private RenderTexture renderTexture_;
 
-        // NOTE (darren): this top view should be a 3d play area
-        // this is currently placeholder
-        // TODO (darren): remove placeholder
-        [Space]
-        [SerializeField] private Image firstCharacterImage_;
-        [SerializeField] private Image secondCharacterImage_;
+        private Game3DView game3DView_;
 
-        [Space]
-        [SerializeField] private GameObject firstPlayerSelectedContainer_;
-        [SerializeField] private GameObject secondPlayerSelectedContainer_;
-
-        void Awake() {
-            Game.OnCurrentPlayerChanged += RefreshCurrentPlayer;
-        }
-
-        private void Refresh(bool force = false) {
-            // don't refresh if not active
-            if (!force && !gameObject.activeSelf) {
-                return;
+        private void Recycle3DView() {
+            if (game3DView_ != null) {
+                ObjectPoolManager.Recycle(game3DView_);
+                game3DView_ = null;
             }
-
-            Character firstPlayerCharacter = Game.GetCharacterForPlayer(GamePlayer.First);
-            Character secondPlayerCharacter = Game.GetCharacterForPlayer(GamePlayer.Second);
-
-            if (firstPlayerCharacter != null) {
-                firstCharacterImage_.sprite = firstPlayerCharacter.MugShotSprite;
-            } else {
-                firstCharacterImage_.sprite = null;
-            }
-
-            if (secondPlayerCharacter != null) {
-                secondCharacterImage_.sprite = secondPlayerCharacter.MugShotSprite;
-            } else {
-                secondCharacterImage_.sprite = null;
-            }
-        }
-
-        private void RefreshCurrentPlayer(bool force = false) {
-            // don't refresh if not active
-            if (!force && !gameObject.activeSelf) {
-                return;
-            }
-
-            firstPlayerSelectedContainer_.SetActive(Game.CurrentPlayer == GamePlayer.First);
-            secondPlayerSelectedContainer_.SetActive(Game.CurrentPlayer == GamePlayer.Second);
         }
     }
 }
