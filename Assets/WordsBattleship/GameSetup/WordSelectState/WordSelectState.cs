@@ -25,7 +25,6 @@ namespace Tangible.WordsBattleship {
                 }
             }
 
-            GameSetupView.Instance.Show();
             wordSelectView_ = ObjectPoolManager.CreateView<WordSelectView>(viewManager: GameSetupView.Instance.SubViewManager);
             wordSelectView_.Init(HandleNextTapped);
         }
@@ -60,7 +59,7 @@ namespace Tangible.WordsBattleship {
         }
 
         private void ExitWordSelect() {
-            StateMachine_.ExitWordSelect();
+            StateMachine_.StartGame();
         }
     }
 }

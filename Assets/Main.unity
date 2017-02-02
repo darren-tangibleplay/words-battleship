@@ -1939,7 +1939,7 @@ MonoBehaviour:
   genericPromoPrefab: {fileID: 108084, guid: 037394ec931a74ff1ba5e3b8251f6361, type: 2}
   uiManager: {fileID: 1530270533}
   dlManager: {fileID: 1222975978}
---- !u!1001 &2039141037
+--- !u!1001 &2094297612
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

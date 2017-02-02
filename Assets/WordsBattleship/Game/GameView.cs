@@ -8,13 +8,13 @@ using DTViewManager;
 using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
-    public class GameSetupView : MonoBehaviour {
+    public class GameView : MonoBehaviour {
         // PRAGMA MARK - Public Static Interface
-        private static GameSetupView instance_;
-        public static GameSetupView Instance {
+        private static GameView instance_;
+        public static GameView Instance {
             get {
                 if (instance_ == null) {
-                    instance_ = ObjectPoolManager.CreateView<GameSetupView>();
+                    instance_ = ObjectPoolManager.CreateView<GameView>();
                 }
                 return instance_;
             }
@@ -53,8 +53,7 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private GameObject secondPlayerSelectedContainer_;
 
         void Awake() {
-            GameSetup.OnCharacterChanged += Refresh;
-            GameSetup.OnCurrentPlayerChanged += RefreshCurrentPlayer;
+            Game.OnCurrentPlayerChanged += RefreshCurrentPlayer;
         }
 
         private void Refresh(bool force = false) {
@@ -63,8 +62,8 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            Character firstPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.First);
-            Character secondPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.Second);
+            Character firstPlayerCharacter = Game.GetCharacterForPlayer(GamePlayer.First);
+            Character secondPlayerCharacter = Game.GetCharacterForPlayer(GamePlayer.Second);
 
             if (firstPlayerCharacter != null) {
                 firstCharacterImage_.sprite = firstPlayerCharacter.MugShotSprite;
@@ -85,8 +84,8 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            firstPlayerSelectedContainer_.SetActive(GameSetup.CurrentPlayer == GamePlayer.First);
-            secondPlayerSelectedContainer_.SetActive(GameSetup.CurrentPlayer == GamePlayer.Second);
+            firstPlayerSelectedContainer_.SetActive(Game.CurrentPlayer == GamePlayer.First);
+            secondPlayerSelectedContainer_.SetActive(Game.CurrentPlayer == GamePlayer.Second);
         }
     }
 }

@@ -25,7 +25,6 @@ namespace Tangible.WordsBattleship {
                 }
             }
 
-            GameSetupView.Instance.Show();
             characterSelectView_ = ObjectPoolManager.CreateView<CharacterSelectView>(viewManager: GameSetupView.Instance.SubViewManager);
             characterSelectView_.Init(HandleCharacterSelected, HandleNextTapped);
         }
