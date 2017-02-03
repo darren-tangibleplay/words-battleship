@@ -12,6 +12,8 @@ namespace Tangible.WordsBattleship {
         // PRAGMA MARK - Public Interface
         public void Init(Action onNextTapped) {
             onNextTapped_ = onNextTapped;
+
+            text_.text = string.Format(instructionText_, (GameSetup.CurrentPlayer == GamePlayer.First) ? "1" : "2");
         }
 
 
@@ -28,6 +30,10 @@ namespace Tangible.WordsBattleship {
 
 
         // PRAGMA MARK - Internal
+        [SerializeField] private Text text_;
+        [SerializeField] private string instructionText_ = "Set a word for PLAYER {0} to guess!";
+
+        [Space]
         [SerializeField] private Button nextButton_;
         [SerializeField] private Button deleteButton_;
 
