@@ -65,6 +65,9 @@ namespace Tangible.WordsBattleship {
             Character firstPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.First);
             Character secondPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.Second);
 
+            firstCharacterImage_.color = Color.white;
+            secondCharacterImage_.color = Color.white;
+
             if (firstPlayerCharacter != null) {
                 if (GameSetup.CurrentPlayer == GamePlayer.First) {
                     firstCharacterImage_.sprite = firstPlayerCharacter.HappySprite;
@@ -72,6 +75,7 @@ namespace Tangible.WordsBattleship {
                     firstCharacterImage_.sprite = firstPlayerCharacter.NeutralSprite;
                 }
             } else {
+                firstCharacterImage_.color = Color.clear;
                 firstCharacterImage_.sprite = null;
             }
 
@@ -82,6 +86,7 @@ namespace Tangible.WordsBattleship {
                     secondCharacterImage_.sprite = secondPlayerCharacter.NeutralSprite;
                 }
             } else {
+                secondCharacterImage_.color = Color.clear;
                 secondCharacterImage_.sprite = null;
             }
 
