@@ -17,6 +17,8 @@ namespace Tangible.WordsBattleship {
             nameText_.text = character.Name;
 
             onTapped_ = onTapped;
+
+            Refresh();
         }
 
 
@@ -30,14 +32,34 @@ namespace Tangible.WordsBattleship {
 
         void Awake() {
             button_.onClick.AddListener(HandleTapped);
+            GameSetup.OnCharacterChanged += Refresh;
         }
 
         void OnDestroy() {
             button_.onClick.RemoveListener(HandleTapped);
+            GameSetup.OnCharacterChanged -= Refresh;
         }
 
         private void HandleTapped() {
             onTapped_.Invoke(character_);
+        }
+
+        private void Refresh() {
+            bool characterAlreadySelected = false;
+
+            foreach (GamePlayer player in GamePlayerUtil.ValidPlayers) {
+                var character = GameSetup.GetCharacterForPlayer(player);
+                if (character == null) {
+                    continue;
+                }
+
+                if (character == character_) {
+                    characterAlreadySelected = true;
+                    break;
+                }
+            }
+
+            button_.interactable = !characterAlreadySelected;
         }
     }
 }
