@@ -84,7 +84,7 @@ namespace Tangible.WordsBattleship {
             }
 
             if (word.Length > ApplicationConstants.Instance.MaxWordLength) {
-                word = word.Substring(ApplicationConstants.Instance.MaxWordLength);
+                word = word.Substring(0, ApplicationConstants.Instance.MaxWordLength);
             }
 
             GameSetup.SetWordForCurrentPlayer(word);
