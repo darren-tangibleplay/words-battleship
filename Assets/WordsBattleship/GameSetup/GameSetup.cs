@@ -77,10 +77,25 @@ namespace Tangible.WordsBattleship {
             }
         }
 
+        public static bool IsPlayerAI(GamePlayer player) {
+            return aiPlayers_.GetValueOrDefault(player, defaultValue: false);
+        }
+
+        public static void SetPlayerAsAI(GamePlayer player) {
+            aiPlayers_[player] = true;
+
+            GameSetup.SetCharacterForPlayer(player, ApplicationConstants.Instance.AllCharacters.Random());
+
+            // pretend the AI set other player word
+            GamePlayer otherPlayer = GamePlayerUtil.ValidPlayers.FirstOrDefault(p => p != player);
+            GameSetup.SetWordForPlayer(otherPlayer, ApplicationConstants.kRandomWords.Random());
+        }
+
 
         // PRAGMA MARK - Static Internal
         private static Dictionary<GamePlayer, Character> playerCharacters_ = new Dictionary<GamePlayer, Character>();
         private static Dictionary<GamePlayer, string> playerWords_ = new Dictionary<GamePlayer, string>();
+        private static Dictionary<GamePlayer, bool> aiPlayers_ = new Dictionary<GamePlayer, bool>();
 
         private static GamePlayer currentPlayer_;
     }

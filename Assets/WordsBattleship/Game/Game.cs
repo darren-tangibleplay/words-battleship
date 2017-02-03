@@ -23,6 +23,7 @@ namespace Tangible.WordsBattleship {
             foreach (GamePlayer player in GamePlayerUtil.ValidPlayers) {
                 playerCharacters_[player] = GameSetup.GetCharacterForPlayer(player);
                 playerWords_[player] = GameSetup.GetWordForPlayer(player);
+                aiPlayers_[player] = GameSetup.IsPlayerAI(player);
             }
 
             foreach (HashSet<char> guessedLetters in guessedLettersMap_.Values) {
@@ -100,6 +101,10 @@ namespace Tangible.WordsBattleship {
             return GamePlayer.None;
         }
 
+        public static bool IsPlayerAI(GamePlayer player) {
+            return aiPlayers_.GetValueOrDefault(player, defaultValue: false);
+        }
+
         public static GamePlayer CurrentPlayer {
             get { return currentPlayer_; }
             set {
@@ -118,6 +123,7 @@ namespace Tangible.WordsBattleship {
 
         private static Dictionary<GamePlayer, Character> playerCharacters_ = new Dictionary<GamePlayer, Character>();
         private static Dictionary<GamePlayer, string> playerWords_ = new Dictionary<GamePlayer, string>();
+        private static Dictionary<GamePlayer, bool> aiPlayers_ = new Dictionary<GamePlayer, bool>();
 
         private static GamePlayer currentPlayer_;
 

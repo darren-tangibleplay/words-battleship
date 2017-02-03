@@ -11,12 +11,7 @@ namespace Tangible.WordsBattleship {
         }
 
         public void PlayHumanVsAI() {
-            // TODO (darren): remove testing code should only set second player
-            GameSetup.SetCharacterForPlayer(GamePlayer.First, ApplicationConstants.Instance.AllCharacters.Random());
-            GameSetup.SetWordForPlayer(GamePlayer.First, "apple");
-
-            GameSetup.SetCharacterForPlayer(GamePlayer.Second, ApplicationConstants.Instance.AllCharacters.Random());
-            GameSetup.SetWordForPlayer(GamePlayer.Second, "banana");
+            GameSetup.SetPlayerAsAI(GamePlayer.Second);
 
             onComplete_.Invoke();
         }
