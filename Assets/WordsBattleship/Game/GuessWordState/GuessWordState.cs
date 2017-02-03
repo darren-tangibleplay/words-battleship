@@ -9,13 +9,27 @@ using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
     public class GuessWordState : DTStateMachineBehaviour<ApplicationStateMachine> {
+        // PRAGMA MARK - Public Interface
+        public float TimeLeft {
+            get { return _endTime - Time.time; }
+        }
+
+
         // PRAGMA MARK - Internal
+        private float _endTime;
+        private GuessWordView guessWordView_;
+
         protected sealed override void OnStateEntered() {
             MonoBehaviourHelper.OnUpdate += HandleUpdate;
 
             if (Game.IsPlayerAI(Game.CurrentPlayer)) {
                 CoroutineWrapper.StartCoroutine(AIGuessLoop());
             }
+
+            RefreshEndTime();
+
+            guessWordView_ = ObjectPoolManager.CreateView<GuessWordView>(viewManager: GameView.Instance.SubViewManager);
+            guessWordView_.Init(this);
         }
 
         protected sealed override void OnStateExited() {
@@ -29,9 +43,19 @@ namespace Tangible.WordsBattleship {
 
                 Game.CurrentPlayer = GamePlayerUtil.ValidPlayers[newIndex];
             }
+
+            if (guessWordView_ != null) {
+                ObjectPoolManager.Recycle(guessWordView_);
+                guessWordView_ = null;
+            }
         }
 
         private void HandleUpdate() {
+            if (TimeLeft <= 0.0f) {
+                StateMachine_.ExitCurrent();
+                return;
+            }
+
             if (Game.IsPlayerAI(Game.CurrentPlayer)) {
                 return;
             }
@@ -60,6 +84,8 @@ namespace Tangible.WordsBattleship {
                 return true;
             }
 
+            RefreshEndTime();
+
             if (Game.DidCurrentPlayerGuessAllLetters()) {
                 StateMachine_.ExitWinner();
                 return true;
@@ -78,6 +104,10 @@ namespace Tangible.WordsBattleship {
                     yield break;
                 }
             }
+        }
+
+        private void RefreshEndTime() {
+            _endTime = Time.time + ApplicationConstants.Instance.GuessWordTimeLimit;
         }
     }
 }
