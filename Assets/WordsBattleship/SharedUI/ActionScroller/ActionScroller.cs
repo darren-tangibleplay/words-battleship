@@ -33,6 +33,8 @@ namespace Tangible.WordsBattleship {
 
         // PRAGMA MARK - IRecycleCleanupSubscriber Implementation
         public void OnRecycleCleanup() {
+            SetFlipped(false);
+
             if (actionScroller3D_ != null) {
                 ObjectPoolManager.Recycle(actionScroller3D_);
                 actionScroller3D_ = null;

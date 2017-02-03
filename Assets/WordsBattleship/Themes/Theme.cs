@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -17,8 +18,8 @@ namespace Tangible.WordsBattleship {
 
         public string[] Words {
             get {
-                if (parsedWords_ == null) {
-                    parsedWords_ = wordsCSV_.text.Split(@"\s*,\s*").Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                if (parsedWords_ == null || parsedWords_.Length == 0) {
+                    parsedWords_ = Regex.Split(wordsCSV_.text, @"\s*,\s*").Where(s => !string.IsNullOrEmpty(s)).ToArray();
                 }
                 return parsedWords_;
             }
@@ -30,6 +31,6 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private string name_;
         [SerializeField] private TextAsset wordsCSV_;
 
-        private string[] parsedWords_;
+        [NonSerialized] private string[] parsedWords_ = null;
     }
 }

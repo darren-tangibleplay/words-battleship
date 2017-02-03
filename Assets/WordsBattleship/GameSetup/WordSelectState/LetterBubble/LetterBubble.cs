@@ -12,29 +12,32 @@ namespace Tangible.WordsBattleship {
     public class LetterBubble : MonoBehaviour, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
         public void Init(char letter) {
-            text_.text = letter.ToString();
-            // animator_.SetTrigger("Show");
+            if (letter == ' ') {
+                canvasGroup_.alpha = 0.1f;
+                text_.text = "";
+            } else {
+                canvasGroup_.alpha = 1.0f;
+                text_.text = letter.ToString();
+            }
         }
 
         public void Hide() {
             ObjectPoolManager.Recycle(this);
-            // animator_.SetTrigger("Hide");
         }
 
 
         // PRAGMA MARK - IRecycleCleanupSubscriber Implementation
         public void OnRecycleCleanup() {
-            // animator_.SetTrigger("Reset");
         }
 
 
         // PRAGMA MARK - Internal
         [SerializeField] private Text text_;
 
-        // private Animator animator_;
+        private CanvasGroup canvasGroup_;
 
         void Awake() {
-            // animator_ = this.GetRequiredComponent<Animator>();
+            canvasGroup_ = this.GetRequiredComponent<CanvasGroup>();
         }
     }
 }

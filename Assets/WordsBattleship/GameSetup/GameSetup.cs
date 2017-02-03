@@ -17,6 +17,7 @@ namespace Tangible.WordsBattleship {
         public static void Clear() {
             playerCharacters_.Clear();
             playerWords_.Clear();
+            Theme = null;
 
             currentPlayer_ = GamePlayer.None;
         }
@@ -90,6 +91,8 @@ namespace Tangible.WordsBattleship {
             GamePlayer otherPlayer = GamePlayerUtil.ValidPlayers.FirstOrDefault(p => p != player);
             GameSetup.SetWordForPlayer(otherPlayer, ApplicationConstants.kRandomWords.Random());
         }
+
+        public static Theme Theme = null;
 
 
         // PRAGMA MARK - Static Internal

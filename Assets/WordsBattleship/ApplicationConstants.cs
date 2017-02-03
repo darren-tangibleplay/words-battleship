@@ -13,7 +13,7 @@ namespace Tangible.WordsBattleship {
     public class ApplicationConstants : ScriptableObject {
         public static ApplicationConstants Instance;
 
-        public static readonly string[] kRandomWords = new string[] { "apple", "apricot", "avocado", "banana", "blackberry", "blackcurrant", "blueberry", "boysenberry", "cherry", "coconut", "fig", "grape", "grapefruit", "kiwifruit", "lemon", "lime", "lychee", "mandarin", "mango", "melon", "nectarine", "orange", "papaya", "passion fruit", "peach", "pear", "pineapple", "plum", "pomegranate", "quince", "raspberry", "strawberry", "watermelon" };
+        public static readonly string[] kRandomWords = new string[] { "potato", "potato", "potato" };
 
         public static readonly char[] kLetters = new char[] {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -45,5 +45,7 @@ namespace Tangible.WordsBattleship {
 
         [Space]
         public int MaxWordLength = 10;
+
+        public bool EnableThemes = true;
     }
 }
