@@ -28,7 +28,6 @@ namespace Tangible.WordsBattleship {
 
         public void Show() {
             Refresh(force: true);
-            RefreshCurrentPlayer(force: true);
             gameObject.SetActive(true);
         }
 
@@ -54,7 +53,7 @@ namespace Tangible.WordsBattleship {
 
         void Awake() {
             GameSetup.OnCharacterChanged += Refresh;
-            GameSetup.OnCurrentPlayerChanged += RefreshCurrentPlayer;
+            GameSetup.OnCurrentPlayerChanged += Refresh;
         }
 
         private void Refresh(bool force = false) {
@@ -67,22 +66,23 @@ namespace Tangible.WordsBattleship {
             Character secondPlayerCharacter = GameSetup.GetCharacterForPlayer(GamePlayer.Second);
 
             if (firstPlayerCharacter != null) {
-                firstCharacterImage_.sprite = firstPlayerCharacter.MugShotSprite;
+                if (GameSetup.CurrentPlayer == GamePlayer.First) {
+                    firstCharacterImage_.sprite = firstPlayerCharacter.HappySprite;
+                } else {
+                    firstCharacterImage_.sprite = firstPlayerCharacter.NeutralSprite;
+                }
             } else {
                 firstCharacterImage_.sprite = null;
             }
 
             if (secondPlayerCharacter != null) {
-                secondCharacterImage_.sprite = secondPlayerCharacter.MugShotSprite;
+                if (GameSetup.CurrentPlayer == GamePlayer.Second) {
+                    secondCharacterImage_.sprite = secondPlayerCharacter.HappySprite;
+                } else {
+                    secondCharacterImage_.sprite = secondPlayerCharacter.NeutralSprite;
+                }
             } else {
                 secondCharacterImage_.sprite = null;
-            }
-        }
-
-        private void RefreshCurrentPlayer(bool force = false) {
-            // don't refresh if not active
-            if (!force && !gameObject.activeSelf) {
-                return;
             }
 
             firstPlayerSelectedContainer_.SetActive(GameSetup.CurrentPlayer == GamePlayer.First);

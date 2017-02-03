@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0066f108a99cd4c76b46d3a75d8f6664, type: 3}
+  m_Name: Zebra
+  m_EditorClassIdentifier: 
+  name_: Zebra
+  mugShotSprite_: {fileID: 21300000, guid: a7c33a9c1fdfa440a8170f0a1ebe4343, type: 3}
+  neutralSprite_: {fileID: 21300000, guid: b81ac07001a894efb931594f74299eb5, type: 3}
+  happySprite_: {fileID: 21300000, guid: 010ac67d38cfc462d954cd593425710b, type: 3}
+  sadSprite_: {fileID: 21300000, guid: dd74b2f3ff40948498726294ee9438a5, type: 3}
+  viewPrefabName_: ZebraView
+  gamePrefabName_: ZebraGame

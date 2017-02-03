@@ -70,7 +70,7 @@ namespace Tangible.WordsBattleship {
 
         private IEnumerator AIGuessLoop() {
             while (true) {
-                yield return new WaitForSeconds(UnityEngine.Random.Range(2.0f, 3.0f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0.8f, 1.5f));
 
                 char[] nonGuessedLetters = ApplicationConstants.kLetters.Where(l => !Game.DidCurrentPlayerAlreadyGuessLetter(l)).ToArray();
                 bool exited = HandleGuess(nonGuessedLetters.Random());

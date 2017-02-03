@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderTexture_: {fileID: 8400000, guid: abe7647d86ca94749862a97725303f44, type: 2}
-  baseScrollSpeed_: 1.5
+  baseScrollSpeed_: 1
 --- !u!222 &222000012782956968
 CanvasRenderer:
   m_ObjectHideFlags: 1

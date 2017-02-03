@@ -25,15 +25,15 @@ namespace Tangible.WordsBattleship {
 
             actionScroller_ = ObjectPoolManager.CreateView<ActionScroller>();
             actionScroller_.Scroll("ScrollWinnerCharacter", 0.5f, HorizontalDirection.Right, (GameObject prefab) => {
-                prefab.GetComponent<SpriteRenderer>().sprite = winnerCharacter.MugShotSprite;
+                prefab.GetComponent<SpriteRenderer>().sprite = winnerCharacter.HappySprite;
             });
             actionScroller_.Scroll("ScrollLoserCharacter", 0.7f, HorizontalDirection.Left, (GameObject prefab) => {
-                prefab.GetComponent<SpriteRenderer>().sprite = loserCharacter.MugShotSprite;
+                prefab.GetComponent<SpriteRenderer>().sprite = loserCharacter.SadSprite;
             });
 
             actionScroller_.SetFlipped(winner != GamePlayer.First);
 
-            CoroutineWrapper.DoAfterDelay(2f, () => {
+            CoroutineWrapper.DoAfterDelay(3f, () => {
                 StateMachine_.GoToMainMenu();
             });
         }
