@@ -57,7 +57,11 @@ namespace Tangible.WordsBattleship {
 
             if (Game.DidCurrentPlayerAlreadyGuessLetter(letter_)) {
                 letterBubble_.Init(letter_);
-                canvasGroup_.alpha = 1.0f;
+                if (ApplicationConstants.kLettersSet.Contains(letter_)) {
+                    canvasGroup_.alpha = 1.0f;
+                } else {
+                    canvasGroup_.alpha = 0.5f;
+                }
             } else {
                 letterBubble_.Init(' ');
                 canvasGroup_.alpha = 0.9f;

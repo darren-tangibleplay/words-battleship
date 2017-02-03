@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Tangible.Shared;
 using UnityEngine;
 
@@ -13,12 +14,14 @@ namespace Tangible.WordsBattleship {
     public class ApplicationConstants : ScriptableObject {
         public static ApplicationConstants Instance;
 
-        public static readonly string[] kRandomWords = new string[] { "potato", "potato", "potato" };
+        public static readonly string[] kRandomWords = new string[] { "pot-at o", "pot a-to", "po ta-to" };
 
         public static readonly char[] kLetters = new char[] {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         };
+
+        public static readonly HashSet<char> kLettersSet = new HashSet<char>(kLetters);
 
 
         // PRAGMA MARK - Public Interface

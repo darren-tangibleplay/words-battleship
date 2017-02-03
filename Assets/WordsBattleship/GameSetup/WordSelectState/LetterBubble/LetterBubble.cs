@@ -12,13 +12,7 @@ namespace Tangible.WordsBattleship {
     public class LetterBubble : MonoBehaviour, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
         public void Init(char letter) {
-            if (letter == ' ') {
-                canvasGroup_.alpha = 0.1f;
-                text_.text = "";
-            } else {
-                canvasGroup_.alpha = 1.0f;
-                text_.text = letter.ToString();
-            }
+            text_.text = letter.ToString();
         }
 
         public void Hide() {

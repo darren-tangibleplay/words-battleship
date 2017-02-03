@@ -56,6 +56,11 @@ namespace Tangible.WordsBattleship {
         }
 
         public static bool DidPlayerAlreadyGuessLetter(GamePlayer player, char letter) {
+            // non letter characters are already guessed
+            if (!ApplicationConstants.kLettersSet.Contains(letter)) {
+                return true;
+            }
+
             HashSet<char> guessedLetters = guessedLettersMap_.GetAndCreateIfNotFound(player);
             return guessedLetters.Contains(letter);
         }
