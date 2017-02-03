@@ -6,14 +6,18 @@ using UnityEngine.UI;
 using DTObjectPoolManager;
 using DTViewManager;
 using Tangible.Shared;
+using TMPro;
 
 namespace Tangible.WordsBattleship {
     public class WordSelectView : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
-        public void Init(Action onNextTapped) {
+        public void Init(Action onNextTapped, Action onTimeout) {
             onNextTapped_ = onNextTapped;
+            onTimeout_ = onTimeout;
 
             text_.text = string.Format(instructionText_, (GameSetup.CurrentPlayer == GamePlayer.First) ? "1" : "2");
+
+            endTime_ = Time.time + ApplicationConstants.Instance.WordSelectTimeLimit;
         }
 
 
@@ -30,6 +34,7 @@ namespace Tangible.WordsBattleship {
 
 
         // PRAGMA MARK - Internal
+        [SerializeField] private TMP_Text timerText_;
         [SerializeField] private Text text_;
         [SerializeField] private string instructionText_ = "Set a word for PLAYER {0} to guess!";
 
@@ -38,6 +43,9 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private Button deleteButton_;
 
         private Action onNextTapped_;
+        private Action onTimeout_;
+
+        private float endTime_;
 
         void Awake() {
             nextButton_.onClick.AddListener(HandleNextTapped);
@@ -50,6 +58,20 @@ namespace Tangible.WordsBattleship {
         }
 
         private void HandleUpdate() {
+            float now = Time.time;
+            float timeLeft = endTime_ - now;
+
+            timerText_.text = (Math.Max((int)timeLeft, 0)).ToString();
+            timerText_.color = (timeLeft <= 10.0f) ? Color.red : Color.green;
+
+            if (timeLeft <= 0.0f) {
+                if (onTimeout_ != null) {
+                    onTimeout_.Invoke();
+                    onTimeout_ = null;
+                }
+                return;
+            }
+
             string word = GameSetup.GetWordForCurrentPlayer();
             foreach (char letter in Vision.AllNewLetters()) {
                 // append letter to current player word

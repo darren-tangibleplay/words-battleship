@@ -4,6 +4,7 @@ using UnityEngine;
 
 using DTAnimatorStateMachine;
 using DTObjectPoolManager;
+using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
     public class WordSelectState : DTStateMachineBehaviour<ApplicationStateMachine> {
@@ -26,7 +27,7 @@ namespace Tangible.WordsBattleship {
             }
 
             wordSelectView_ = ObjectPoolManager.CreateView<WordSelectView>(viewManager: GameSetupView.Instance.SubViewManager);
-            wordSelectView_.Init(HandleNextTapped);
+            wordSelectView_.Init(HandleNextTapped, HandleTimeout);
         }
 
         protected sealed override void OnStateExited() {
@@ -50,6 +51,14 @@ namespace Tangible.WordsBattleship {
             }
 
             Exit();
+        }
+
+        private void HandleTimeout() {
+            GameSetup.SetWordForCurrentPlayer(GameSetup.Theme.Words.Random());
+
+            CoroutineWrapper.DoAfterDelay(1.3f, () => {
+                Exit();
+            });
         }
 
         private void Exit() {
