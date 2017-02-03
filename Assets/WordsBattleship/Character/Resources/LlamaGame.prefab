@@ -37,7 +37,7 @@ GameObject:
   - 4: {fileID: 4000013163184188}
   - 114: {fileID: 114000011685567842}
   m_Layer: 0
-  m_Name: LamaGame
+  m_Name: LlamaGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

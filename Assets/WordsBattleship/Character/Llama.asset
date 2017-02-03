@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0066f108a99cd4c76b46d3a75d8f6664, type: 3}
-  m_Name: Lama
+  m_Name: Llama
   m_EditorClassIdentifier: 
-  name_: Lama
+  name_: Llama
   mugShotSprite_: {fileID: 21300000, guid: 6d5b8dc6e987e46dda802ccac9a9aca0, type: 3}
   neutralSprite_: {fileID: 21300000, guid: 197be63e7a08f42238dc58e278526807, type: 3}
   happySprite_: {fileID: 21300000, guid: a036f5f4883364a11bc7206b9a1dac4f, type: 3}
   sadSprite_: {fileID: 21300000, guid: 62174bc6654c44c4b9b3086b75d7e983, type: 3}
-  viewPrefabName_: LamaView
-  gamePrefabName_: LamaGame
+  viewPrefabName_: LlamaView
+  gamePrefabName_: LlamaGame
