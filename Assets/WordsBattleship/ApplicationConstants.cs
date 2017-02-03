@@ -41,6 +41,7 @@ namespace Tangible.WordsBattleship {
 
         [Header("Properties")]
         public Character[] AllCharacters;
+        public Theme[] AllThemes;
 
         [Space]
         public int MaxWordLength = 10;
