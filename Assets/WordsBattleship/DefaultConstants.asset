@@ -18,6 +18,7 @@ MonoBehaviour:
   AllThemes:
   - {fileID: 11400000, guid: 14a26320143c34d82b7d8bf30b59887c, type: 2}
   - {fileID: 11400000, guid: 770ac268714e14252b9a71d70aac3998, type: 2}
-  MaxWordLength: 10
+  MaxWordLength: 15
   WordSelectTimeLimit: 20
+  GuessWordTimeLimit: 6
   EnableThemes: 1

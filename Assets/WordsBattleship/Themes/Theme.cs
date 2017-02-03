@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -25,6 +26,15 @@ namespace Tangible.WordsBattleship {
             }
         }
 
+        public HashSet<string> AllWordsSet {
+            get {
+                if (allWordsSet_ == null) {
+                    allWordsSet_ = new HashSet<string>(Words);
+                }
+                return allWordsSet_;
+            }
+        }
+
 
 
         // PRAGMA MARK - Internal
@@ -32,5 +42,6 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private TextAsset wordsCSV_;
 
         [NonSerialized] private string[] parsedWords_ = null;
+        [NonSerialized] private HashSet<string> allWordsSet_ = null;
     }
 }

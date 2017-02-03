@@ -40,8 +40,13 @@ namespace Tangible.WordsBattleship {
         }
 
         private bool HasValidWord() {
-            // TODO (darren): add spell check
-            // TODO (darren): add themes (mandatory word choice?)
+            string word = GameSetup.GetWordForCurrentPlayer();
+
+            if (GameSetup.Theme != null && !GameSetup.Theme.AllWordsSet.Contains(word)) {
+                // TODO (darren): pop up message
+                return false;
+            }
+
             return true;
         }
 

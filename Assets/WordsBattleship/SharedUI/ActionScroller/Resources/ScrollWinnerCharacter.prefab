@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012175273630}
   - 212: {fileID: 212000011042347596}
-  - 114: {fileID: 114000010828772640}
   m_Layer: 0
   m_Name: ScrollWinnerCharacter
   m_TagString: Untagged
@@ -98,18 +97,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011832426526}
   m_Mesh: {fileID: 0}
---- !u!114 &114000010828772640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012652383858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ba88dfc6dac4d58a076a89eab31670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabName: scrollwinnercharacter
 --- !u!114 &114000011178405796
 MonoBehaviour:
   m_ObjectHideFlags: 1

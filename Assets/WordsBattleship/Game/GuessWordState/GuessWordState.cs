@@ -51,6 +51,11 @@ namespace Tangible.WordsBattleship {
         }
 
         private void HandleUpdate() {
+            // don't do anything is current player already won
+            if (Game.DidCurrentPlayerGuessAllLetters()) {
+                return;
+            }
+
             if (TimeLeft <= 0.0f) {
                 StateMachine_.ExitCurrent();
                 return;
@@ -87,7 +92,9 @@ namespace Tangible.WordsBattleship {
             RefreshEndTime();
 
             if (Game.DidCurrentPlayerGuessAllLetters()) {
-                StateMachine_.ExitWinner();
+                CoroutineWrapper.DoAfterDelay(1.3f, () => {
+                    StateMachine_.ExitWinner();
+                });
                 return true;
             }
 
