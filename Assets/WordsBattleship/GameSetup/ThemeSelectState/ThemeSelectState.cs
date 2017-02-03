@@ -35,7 +35,7 @@ namespace Tangible.WordsBattleship {
                 prefab.GetComponentInChildren<TMP_Text>().text = GameSetup.Theme.Name;
             });
 
-            CoroutineWrapper.DoAfterDelay(3f, () => {
+            CoroutineWrapper.DoAfterDelay(2f, () => {
                 StateMachine_.ExitCurrent();
             });
         }
