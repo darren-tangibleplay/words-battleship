@@ -10,7 +10,8 @@ namespace Tangible.WordsBattleship {
     public static class Game {
         // PRAGMA MARK - Static Public Interface
         public static event Action OnCurrentPlayerChanged = delegate {};
-        public static event Action OnPlayerGuessedLetter = delegate {};
+        public static event Action OnAnyPlayerGuessedLetter = delegate {};
+        public static event Action<GamePlayer, char> OnPlayerGuessedLetter = delegate {};
 
         public static bool PopulateFromSetup() {
             if (!IsGameSetupValid()) {
@@ -77,7 +78,8 @@ namespace Tangible.WordsBattleship {
                 return false;
             }
 
-            OnPlayerGuessedLetter.Invoke();
+            OnAnyPlayerGuessedLetter.Invoke();
+            OnPlayerGuessedLetter.Invoke(player, letter);
             return GetWordForPlayer(player).Contains(letter.ToString());
         }
 

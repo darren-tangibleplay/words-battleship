@@ -44,10 +44,6 @@ namespace DTViewManager {
             }
         }
 
-        public void ConfigureWithPriority(ViewPriorityMap priorityMap) {
-            this._priorityMap = priorityMap;
-        }
-
         public Canvas Canvas {
             get { return this._canvas; }
         }
@@ -58,7 +54,10 @@ namespace DTViewManager {
 
 
         // PRAGMA MARK - Internal
-        private ViewPriorityMap _priorityMap = new ViewPriorityMap();
+        [SerializeField] private List<ViewPriorityPair> serializedPriorities_;
+        [SerializeField] private int defaultPriority_ = 100;
+
+        private ViewPriorityMap _priorityMap;
         private Dictionary<Transform, int> _cachedPriorities = new Dictionary<Transform, int>();
 
         private Canvas _canvas;
@@ -67,6 +66,17 @@ namespace DTViewManager {
         void Awake() {
             this._canvas = this.GetComponent<Canvas>();
             this._canvasScaler = this.GetComponent<CanvasScaler>();
+
+            _priorityMap = new ViewPriorityMap(defaultPriority_);
+            foreach (var viewPriorityPair in serializedPriorities_) {
+                _priorityMap.SetPriorityForPrefabName(viewPriorityPair.PrefabName, viewPriorityPair.Priority);
+            }
         }
+    }
+
+    [Serializable]
+    public class ViewPriorityPair {
+        public string PrefabName;
+        public int Priority;
     }
 }

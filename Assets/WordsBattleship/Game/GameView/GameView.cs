@@ -28,6 +28,7 @@ namespace Tangible.WordsBattleship {
 
         public void Show() {
             Recycle3DView();
+
             game3DView_ = ObjectPoolManager.Create<Game3DView>();
             game3DView_.Init(renderTexture_);
         }

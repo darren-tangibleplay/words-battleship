@@ -19,7 +19,7 @@ namespace Tangible.WordsBattleship {
 
         // PRAGMA MARK - IRecycleSetupSubscriber Implementation
         public void OnRecycleSetup() {
-            Game.OnPlayerGuessedLetter += Refresh;
+            Game.OnAnyPlayerGuessedLetter += Refresh;
 
             letterBubble_ = ObjectPoolManager.Create<LetterBubble>(parent: gameObject);
             canvasGroup_ = letterBubble_.GetRequiredComponent<CanvasGroup>();
@@ -28,7 +28,7 @@ namespace Tangible.WordsBattleship {
 
         // PRAGMA MARK - IRecycleCleanupSubscriber Implementation
         public void OnRecycleCleanup() {
-            Game.OnPlayerGuessedLetter -= Refresh;
+            Game.OnAnyPlayerGuessedLetter -= Refresh;
 
             if (letterBubble_ != null) {
                 ObjectPoolManager.Recycle(letterBubble_);

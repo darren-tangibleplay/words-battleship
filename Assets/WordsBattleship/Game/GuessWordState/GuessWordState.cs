@@ -35,15 +35,6 @@ namespace Tangible.WordsBattleship {
         protected sealed override void OnStateExited() {
             MonoBehaviourHelper.OnUpdate -= HandleUpdate;
 
-            if (Game.DidCurrentPlayerGuessAllLetters()) {
-                Game.CurrentPlayer = GamePlayer.None;
-            } else {
-                int index = Array.IndexOf(GamePlayerUtil.ValidPlayers, Game.CurrentPlayer);
-                int newIndex = GamePlayerUtil.ValidPlayers.WrapIndex(index + 1);
-
-                Game.CurrentPlayer = GamePlayerUtil.ValidPlayers[newIndex];
-            }
-
             if (guessWordView_ != null) {
                 ObjectPoolManager.Recycle(guessWordView_);
                 guessWordView_ = null;
@@ -96,7 +87,7 @@ namespace Tangible.WordsBattleship {
 
         private IEnumerator AIGuessLoop() {
             while (true) {
-                yield return new WaitForSeconds(UnityEngine.Random.Range(0.8f, 1.5f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1.3f, 2.0f));
 
                 char[] nonGuessedLetters = ApplicationConstants.kLetters.Where(l => !Game.DidCurrentPlayerAlreadyGuessLetter(l)).ToArray();
                 bool exited = HandleGuess(nonGuessedLetters.Random());

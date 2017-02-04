@@ -156,6 +156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a967df6e8b8e446a80c578cc2eaf572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializedPriorities_:
+  - PrefabName: PlayerLetterGuessed
+    Priority: 200
+  - PrefabName: ActionScroller
+    Priority: 500
+  defaultPriority_: 100
 --- !u!114 &114000011496539842
 MonoBehaviour:
   m_ObjectHideFlags: 1

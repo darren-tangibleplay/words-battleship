@@ -10,17 +10,16 @@ namespace DTViewManager {
         // PRAGMA MARK - Public Interface
         public ViewPriorityMap() {}
 
-        public ViewPriorityMap(int defaultPriority, Dictionary<string, int> priorityMap) {
+        public ViewPriorityMap(int defaultPriority) {
             this._defaultPriority = defaultPriority;
-
-            foreach (KeyValuePair<string, int> pair in priorityMap) {
-                // make sure all keys are lower cased values
-                this._priorityMap[pair.Key.ToLower()] = pair.Value;
-            }
         }
 
         public int PriorityForPrefabName(string prefabName) {
             return this._priorityMap.SafeGet(prefabName.ToLower(), defaultValue: this._defaultPriority);
+        }
+
+        public void SetPriorityForPrefabName(string prefabName, int priority) {
+            this._priorityMap[prefabName.ToLower()] = priority;
         }
 
         public int DefaultPriority { get { return this._defaultPriority; } }

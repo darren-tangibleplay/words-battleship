@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000011924316384}
   - 114: {fileID: 114000011166418756}
+  - 114: {fileID: 114000011621392520}
   m_Layer: 0
   m_Name: GameView
   m_TagString: Untagged
@@ -38,6 +39,21 @@ GameObject:
   - 114: {fileID: 114000012949790452}
   m_Layer: 0
   m_Name: SubViewManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000011902905648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 224000014076774834}
+  m_Layer: 0
+  m_Name: LetterGuessedContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,6 +215,18 @@ MonoBehaviour:
   m_Spacing: {x: -20, y: -20}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!114 &114000011621392520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010312598200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1f1a71f1a474bfcb01a22b494bb2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container_: {fileID: 1000011902905648}
 --- !u!114 &114000012173285844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +346,7 @@ RectTransform:
   m_Children:
   - {fileID: 224000013061434992}
   - {fileID: 224000011528986514}
+  - {fileID: 224000014076774834}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -413,6 +442,24 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 224000013061434992}
   m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224000014076774834
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011902905648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 224000011924316384}
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
