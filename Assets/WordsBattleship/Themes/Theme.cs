@@ -20,7 +20,7 @@ namespace Tangible.WordsBattleship {
         public string[] Words {
             get {
                 if (parsedWords_ == null || parsedWords_.Length == 0) {
-                    parsedWords_ = Regex.Split(wordsCSV_.text, @"\s*,\s*").Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                    parsedWords_ = Regex.Split(wordsCSV_.text, @"\s*,\s*").Where(s => !string.IsNullOrEmpty(s)).Select(s => s.ToLower()).ToArray();
                 }
                 return parsedWords_;
             }

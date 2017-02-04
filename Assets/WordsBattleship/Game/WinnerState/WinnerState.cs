@@ -20,21 +20,25 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            Character winnerCharacter = Game.GetCharacterForPlayer(winner);
-            Character loserCharacter = Game.GetCharacterForPlayer(GamePlayerUtil.ValidPlayers.FirstOrDefault(p => p != winner));
+            Game.CurrentPlayer = winner;
 
-            actionScroller_ = ObjectPoolManager.CreateView<ActionScroller>();
-            actionScroller_.Scroll("ScrollWinnerCharacter", 0.5f, HorizontalDirection.Right, (GameObject prefab) => {
-                prefab.GetComponent<SpriteRenderer>().sprite = winnerCharacter.HappySprite;
-            });
-            actionScroller_.Scroll("ScrollLoserCharacter", 0.7f, HorizontalDirection.Left, (GameObject prefab) => {
-                prefab.GetComponent<SpriteRenderer>().sprite = loserCharacter.SadSprite;
-            });
+            CoroutineWrapper.DoAfterDelay(1.2f, () => {
+                Character winnerCharacter = Game.GetCharacterForPlayer(winner);
+                Character loserCharacter = Game.GetCharacterForPlayer(GamePlayerUtil.ValidPlayers.FirstOrDefault(p => p != winner));
 
-            actionScroller_.SetFlipped(winner != GamePlayer.First);
+                actionScroller_ = ObjectPoolManager.CreateView<ActionScroller>();
+                actionScroller_.Scroll("ScrollWinnerCharacter", 0.5f, HorizontalDirection.Right, (GameObject prefab) => {
+                    prefab.GetComponent<SpriteRenderer>().sprite = winnerCharacter.HappySprite;
+                });
+                actionScroller_.Scroll("ScrollLoserCharacter", 0.7f, HorizontalDirection.Left, (GameObject prefab) => {
+                    prefab.GetComponent<SpriteRenderer>().sprite = loserCharacter.SadSprite;
+                });
 
-            CoroutineWrapper.DoAfterDelay(3f, () => {
-                StateMachine_.GoToMainMenu();
+                actionScroller_.SetFlipped(winner != GamePlayer.First);
+
+                CoroutineWrapper.DoAfterDelay(3f, () => {
+                    StateMachine_.GoToMainMenu();
+                });
             });
         }
 
