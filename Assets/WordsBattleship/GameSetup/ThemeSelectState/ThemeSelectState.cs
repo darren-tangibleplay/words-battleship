@@ -22,8 +22,8 @@ namespace Tangible.WordsBattleship {
 
             // set AI words based on theme
             foreach (GamePlayer player in GamePlayerUtil.ValidPlayers) {
-                if (!GameSetup.IsPlayerAI(player)) {
-                    GameSetup.SetWordForPlayer(player, GameSetup.Theme.Words.Random());
+                if (GameSetup.IsPlayerAI(player)) {
+                    GameSetup.SetWordForPlayer(GamePlayerUtil.NextPlayer(player), GameSetup.Theme.Words.Random());
                 }
             }
 

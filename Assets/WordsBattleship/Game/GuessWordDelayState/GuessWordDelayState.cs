@@ -17,10 +17,7 @@ namespace Tangible.WordsBattleship {
                 if (Game.DidCurrentPlayerGuessAllLetters()) {
                     Game.CurrentPlayer = GamePlayer.None;
                 } else {
-                    int index = Array.IndexOf(GamePlayerUtil.ValidPlayers, Game.CurrentPlayer);
-                    int newIndex = GamePlayerUtil.ValidPlayers.WrapIndex(index + 1);
-
-                    Game.CurrentPlayer = GamePlayerUtil.ValidPlayers[newIndex];
+                    Game.CurrentPlayer = GamePlayerUtil.NextPlayer(Game.CurrentPlayer);
                 }
 
                 StateMachine_.ExitCurrent();

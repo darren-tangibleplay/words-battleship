@@ -12,6 +12,11 @@ using Tangible.Shared;
 namespace Tangible.WordsBattleship {
     [CreateAssetMenu(fileName="Theme", menuName="Theme")]
     public class Theme : ScriptableObject {
+        // PRAGMA MARK - Static
+        private static readonly Regex kNonLetterRegex = new Regex(@"[^a-z]+");
+
+
+
         // PRAGMA MARK - Public Interface
         public string Name {
             get { return name_; }
@@ -29,7 +34,7 @@ namespace Tangible.WordsBattleship {
         public HashSet<string> AllWordsSet {
             get {
                 if (allWordsSet_ == null) {
-                    allWordsSet_ = new HashSet<string>(Words);
+                    allWordsSet_ = new HashSet<string>(Words.Select(s => kNonLetterRegex.Replace(s, "")));
                 }
                 return allWordsSet_;
             }

@@ -21,6 +21,12 @@ namespace Tangible.WordsBattleship {
             get; private set;
         }
 
+        public static GamePlayer NextPlayer(GamePlayer player) {
+            int index = Array.IndexOf(GamePlayerUtil.ValidPlayers, player);
+            int newIndex = GamePlayerUtil.ValidPlayers.WrapIndex(index + 1);
+
+            return GamePlayerUtil.ValidPlayers[newIndex];
+        }
 
         static GamePlayerUtil() {
             AllPlayers = Enum.GetValues(typeof(GamePlayer)).ESelect(e => (GamePlayer)e).OrderBy(e => e).ToArray();

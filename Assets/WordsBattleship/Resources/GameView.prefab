@@ -210,7 +210,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 65, y: 65}
   m_Spacing: {x: -20, y: -20}
   m_Constraint: 1
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1f1a71f1a474bfcb01a22b494bb2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container_: {fileID: 1000011902905648}
 --- !u!114 &114000012173285844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +244,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 65, y: 65}
   m_Spacing: {x: -20, y: -20}
   m_Constraint: 1
@@ -273,6 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a967df6e8b8e446a80c578cc2eaf572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializedPriorities_: []
+  defaultPriority_: 100
 --- !u!114 &114000013277343150
 MonoBehaviour:
   m_ObjectHideFlags: 1
