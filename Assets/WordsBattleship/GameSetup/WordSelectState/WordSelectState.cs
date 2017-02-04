@@ -52,6 +52,8 @@ namespace Tangible.WordsBattleship {
 
         private void HandleNextTapped() {
             if (!HasValidWord()) {
+                string word = GameSetup.GetWordForCurrentPlayer();
+                PopupMessage.Make(word + " is not in the list of valid words!");
                 return;
             }
 

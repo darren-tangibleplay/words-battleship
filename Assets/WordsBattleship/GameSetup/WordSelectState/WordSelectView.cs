@@ -85,6 +85,7 @@ namespace Tangible.WordsBattleship {
 
             if (word.Length > ApplicationConstants.Instance.MaxWordLength) {
                 word = word.Substring(0, ApplicationConstants.Instance.MaxWordLength);
+                PopupMessage.Make("Can't add any more letters!");
             }
 
             GameSetup.SetWordForCurrentPlayer(word);

@@ -803,7 +803,7 @@ MonoBehaviour:
   on_screen_controller_prefab_: {fileID: 11400002, guid: cb073e74b009149d1bce0ece1a0dc25a,
     type: 2}
   debug_recorded_input_: 
-  deck_prefab_: {fileID: 128190, guid: c09add56951d9460089586ba8646ad2a, type: 2}
+  deck_prefab_: {fileID: 128190, guid: ed84d686097cc465bb5c89ccb6f8e75c, type: 2}
   reflector_marker_: {fileID: 1436290174}
 --- !u!114 &1222975975
 MonoBehaviour:
