@@ -7,7 +7,7 @@ namespace Tangible.Game {
     public class DependencyState : GameState {
         public const string kStateName = "dependency";
 
-        public DependencyState() : base(kStateName, usesVision: false) {
+        public DependencyState() : base(kStateName, usesVision: true) {
         }
 
         override public void OnPush() {

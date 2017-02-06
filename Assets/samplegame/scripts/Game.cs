@@ -494,6 +494,10 @@ public class Game : GameController {
         state_machine_.PushState(new LevelSelectState(OnLevelSelected, Level.LevelName));
 	}
 
+    public void AnimateToOriginal() {
+        controller_.AnimateToOriginal();
+    }
+
     // this function gets called every time we switch states
     // use it to mute/unmute whether vision is needed
     private void HandleStateChange(GameState current) {
@@ -525,6 +529,16 @@ public class Game : GameController {
     }
 
     Tangible.Event processEvent(Tangible.Event e) {
+        // NOTE (darren): vision SDK start point
+        var lettersFound = new List<char>();
+		foreach (TangibleObject obj in e.objects) {
+            int charIndex = obj.id % 26;
+            char character = (char)((int)'a' + charIndex);
+            lettersFound.Add(character);
+		}
+        Tangible.WordsBattleship.Vision.HandleLettersFromVisionEvent(lettersFound);
+        // END
+
         debug_frame_vision++;
         return event_processor_.processEvent(e);
 	}
