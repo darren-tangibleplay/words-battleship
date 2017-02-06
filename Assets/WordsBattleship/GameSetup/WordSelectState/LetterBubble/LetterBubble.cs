@@ -12,7 +12,7 @@ namespace Tangible.WordsBattleship {
     public class LetterBubble : MonoBehaviour, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
         public void Init(char letter) {
-            text_.text = letter.ToString();
+            text_.text = letter.ToString().ToUpper();
         }
 
         public void Hide() {

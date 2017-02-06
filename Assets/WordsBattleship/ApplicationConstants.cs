@@ -51,6 +51,10 @@ namespace Tangible.WordsBattleship {
         public int WordSelectTimeLimit = 30;
         public int GuessWordTimeLimit = 6;
 
+        [Space]
         public bool EnableThemes = true;
+
+        [Space]
+        public Color[] PlayerColors;
     }
 }

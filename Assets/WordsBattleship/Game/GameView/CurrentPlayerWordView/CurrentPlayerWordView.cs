@@ -24,8 +24,12 @@ namespace Tangible.WordsBattleship {
 
 
         // PRAGMA MARK - Internal
+        [SerializeField] private Image background_;
+
         private void RefreshCurrentPlayer() {
             gameObject.RecycleAllChildren();
+
+            background_.color = ApplicationConstants.Instance.PlayerColors[(int)Game.CurrentPlayer];
 
             string word = Game.GetWordForCurrentPlayer();
             if (word == null) {
