@@ -50,7 +50,8 @@ namespace Tangible.WordsBattleship {
 
         void Awake() {
             this.GetComponentInChildren<RenderTextureSource>().RegisterForRenderTexture((renderTexture) => {
-                game3DView_.Init(renderTexture);
+                renderTexture_ = renderTexture;
+                game3DView_.Init(renderTexture_);
             });
         }
 

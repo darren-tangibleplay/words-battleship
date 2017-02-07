@@ -13,7 +13,20 @@ namespace Tangible.WordsBattleship {
     public static class Vision {
         // PRAGMA MARK - Public Interface
         public static char[] AllNewLetters() {
-            return newLetters_.ToArray();
+            HashSet<char> newLetters = new HashSet<char>(newLetters_);
+
+            // NOTE (darren): we do this separately from the vision
+            // because the vision won't get hit unless there is something on the board
+            // therefore keyboard events are separate and treated differently
+            #if UNITY_EDITOR
+            foreach (char letter in ApplicationConstants.kLetters) {
+                if (Input.GetKeyDown(letter.ToString())) {
+                    newLetters.Add(letter);
+                }
+            }
+            #endif
+
+            return newLetters.ToArray();
         }
 
         public static void HandleLettersFromVisionEvent(IList<char> letters) {
@@ -47,21 +60,5 @@ namespace Tangible.WordsBattleship {
 
         // temporary buffer
         private static readonly HashSet<char> lettersFoundThisFrameBuffer_ = new HashSet<char>();
-
-        [RuntimeInitializeOnLoadMethod]
-        private static void RegisterUpdate() {
-            MonoBehaviourHelper.OnUpdate += HandleUpdate;
-        }
-
-        private static void HandleUpdate() {
-            // Handle Unity editor keys in same way as vision events
-            #if UNITY_EDITOR
-            foreach (char letter in ApplicationConstants.kLetters) {
-                if (Input.GetKey(letter.ToString())) {
-                    lettersFoundThisFrameBuffer_.Add(letter);
-                }
-            }
-            #endif
-        }
     }
 }

@@ -156,6 +156,10 @@ public class OnScreenController : MonoBehaviour, Controller {
 		if (Input.touchCount > 0) {
 //			Debug.Log("touchCount " + Input.touchCount);
 		}
+
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            AnimateToOriginal();
+        }
     }
 
     //----------------------
