@@ -8,10 +8,11 @@ using DTViewManager;
 using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
-    public class CurrentPlayerLetter : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
+    public class GamePlayerLetter : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Interface
-        public void Init(char letter) {
+        public void Init(char letter, GamePlayer player) {
             letter_ = letter;
+            player_ = player;
 
             Refresh();
         }
@@ -55,7 +56,7 @@ namespace Tangible.WordsBattleship {
                 return;
             }
 
-            if (Game.DidCurrentPlayerAlreadyGuessLetter(letter_)) {
+            if (Game.DidPlayerAlreadyGuessLetter(player_, letter_)) {
                 letterBubble_.Init(letter_);
                 if (ApplicationConstants.kLettersSet.Contains(letter_)) {
                     canvasGroup_.alpha = 1.0f;

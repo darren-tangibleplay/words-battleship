@@ -8,7 +8,7 @@ using DTViewManager;
 using Tangible.Shared;
 
 namespace Tangible.WordsBattleship {
-    public class GameView : MonoBehaviour {
+    public class GameView : MonoBehaviour, IRecycleSetupSubscriber, IRecycleCleanupSubscriber {
         // PRAGMA MARK - Public Static Interface
         private static GameView instance_;
         public static GameView Instance {
@@ -41,10 +41,29 @@ namespace Tangible.WordsBattleship {
         }
 
 
+        // PRAGMA MARK - IRecycleSetupSubscriber Implementation
+        public void OnRecycleSetup() {
+            wordView_ = ObjectPoolManager.Create<GamePlayerWordView>(parent: currentPlayerWordViewContainer_);
+            wordView_.Init(useCurrentPlayer: true);
+        }
+
+
+        // PRAGMA MARK - IRecycleCleanupSubscriber Implementation
+        public void OnRecycleCleanup() {
+            if (wordView_ != null) {
+                ObjectPoolManager.Recycle(wordView_);
+                wordView_ = null;
+            }
+        }
+
+
         // PRAGMA MARK - Internal
         [Header("Outlets")]
         [SerializeField] private ViewManager subViewManager_;
         [SerializeField] private RenderTexture renderTexture_;
+        [SerializeField] private GameObject currentPlayerWordViewContainer_;
+
+        private GamePlayerWordView wordView_;
 
         private Game3DView game3DView_;
 

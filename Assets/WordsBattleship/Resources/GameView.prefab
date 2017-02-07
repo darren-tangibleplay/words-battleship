@@ -136,27 +136,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012529003378}
-  - 114: {fileID: 114000010238237020}
-  - 114: {fileID: 114000013277343150}
   m_Layer: 0
-  m_Name: CurrentPlayerWordView
+  m_Name: CurrentPlayerWordViewContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114000010238237020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013811639332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44c120ce365044ae8d8af64aff7a715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background_: {fileID: 114000013589025890}
 --- !u!114 &114000011166418756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subViewManager_: {fileID: 114000012949790452}
   renderTexture_: {fileID: 8400000, guid: 2251cfa557a8045d8bf6d74ba815cd98, type: 2}
+  currentPlayerWordViewContainer_: {fileID: 1000013811639332}
 --- !u!114 &114000011305377436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,29 +279,6 @@ MonoBehaviour:
   - PrefabName: CurrentPlayerWordView
     Priority: 0
   defaultPriority_: 100
---- !u!114 &114000013277343150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013811639332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2095666955, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: -30, y: -10}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &114000013589025890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.52156866, g: 0.6666667, b: 0.8666667, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
