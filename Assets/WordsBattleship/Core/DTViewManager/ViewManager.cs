@@ -38,7 +38,7 @@ namespace DTViewManager {
 
                 int childPriority = this._cachedPriorities[child];
                 if (childPriority > priority) {
-                    // view.transform.SetSiblingIndex(i);
+                    view.transform.SetSiblingIndex(i);
                     break;
                 }
             }
