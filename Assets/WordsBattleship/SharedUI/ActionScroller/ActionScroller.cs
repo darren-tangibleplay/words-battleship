@@ -47,5 +47,11 @@ namespace Tangible.WordsBattleship {
         [SerializeField] private float baseScrollSpeed_;
 
         private ActionScroller3D actionScroller3D_;
+
+        void Awake() {
+            this.GetComponentInChildren<RenderTextureSource>().RegisterForRenderTexture((renderTexture) => {
+                actionScroller3D_.Init(renderTexture);
+            });
+        }
     }
 }

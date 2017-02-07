@@ -48,6 +48,12 @@ namespace Tangible.WordsBattleship {
 
         private Game3DView game3DView_;
 
+        void Awake() {
+            this.GetComponentInChildren<RenderTextureSource>().RegisterForRenderTexture((renderTexture) => {
+                game3DView_.Init(renderTexture);
+            });
+        }
+
         private void Recycle3DView() {
             if (game3DView_ != null) {
                 ObjectPoolManager.Recycle(game3DView_);
