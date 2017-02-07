@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: aa262c06ff59346ffb99a9e749f01265
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: FadedSmall1024_0
+    21300002: FadedSmall1024_1
+    21300004: FadedSmall1024_2
+    21300006: FadedSmall1024_3
+    21300008: FadedSmall1024_4
+    21300010: FadedSmall1024_5
+    21300012: FadedSmall1024_6
+    21300014: FadedSmall1024_7
+    21300016: FadedSmall1024_8
+    21300018: FadedSmall1024_9
+    21300020: FadedSmall1024_10
+    21300022: FadedSmall1024_11
+    21300024: FadedSmall1024_12
+    21300026: FadedSmall1024_13
+    21300028: FadedSmall1024_14
+    21300030: FadedSmall1024_15
+    21300032: FadedSmall1024_16
+    21300034: FadedSmall1024_17
+    21300036: FadedSmall1024_18
+    21300038: FadedSmall1024_19
+    21300040: FadedSmall1024_20
+    21300042: FadedSmall1024_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: 7a1155f82e3194ab3bdc3029b3ed1e9d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SolidSmall512_0
+    21300002: SolidSmall512_1
+    21300004: SolidSmall512_2
+    21300006: SolidSmall512_3
+    21300008: SolidSmall512_4
+    21300010: SolidSmall512_5
+    21300012: SolidSmall512_6
+    21300014: SolidSmall512_7
+    21300016: SolidSmall512_8
+    21300018: SolidSmall512_9
+    21300020: SolidSmall512_10
+    21300022: SolidSmall512_11
+    21300024: SolidSmall512_12
+    21300026: SolidSmall512_13
+    21300028: SolidSmall512_14
+    21300030: SolidSmall512_15
+    21300032: SolidSmall512_16
+    21300034: SolidSmall512_17
+    21300036: SolidSmall512_18
+    21300038: SolidSmall512_19
+    21300040: SolidSmall512_20
+    21300042: SolidSmall512_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

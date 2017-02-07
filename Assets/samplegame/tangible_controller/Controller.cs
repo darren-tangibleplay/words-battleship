@@ -1,3 +1,9 @@
+using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
+using UnityEngine;
+
 /*
  * Authors: Pramod Sharma, Jerome Scholler
  * Date: 12/20/2012.
@@ -6,313 +12,207 @@
  * (i.e. games) to register (or unregister) a call-back function to receive input events from
  * controller process.
  */
-using UnityEngine;
-using System.Collections.Generic;
+interface Controller {
 
-namespace Tangible {
-     
+    /*
+     * Register user to receive new input events via call-back. Input parameters:
+     * uid: id of the user (or game)
+     * config: controller configuration parameters specific to user
+     */
+    bool Register(TangibleObject.EventDelegate processEvent);
+
+    /*
+     * Un-register the user (e.g. when game ends). This could be used to turn off controller
+     * process all together until new user comes along and flush out any input buffers.
+     */
+    void Unregister();
+
 	/*
-	 * Example of input:
-	 {
-	  "detectionArea": [
-	    -68.7530670166016,
-	    111.020545959473,
-	    -214.002746582031,
-	    -383.412322998047,
-	    234.257186889648,
-	    -401.791381835938,
-	    98.2976379394531,
-	    107.634872436523
-	  ],
-	  "frameCounter": 935,
-	  "items": [
-	    {
-	      "angle": -1.40163362026215,
-	      "confidence": 0.976470589637756,
-	      "id": 227,
-	      "pt": {
-	        "x": 69.748291015625,
-	        "y": 68.156005859375
-	      },
-	      "type": "topcode"
-	    },
-	    {
-	      "angle": -0.676650702953339,
-	      "confidence": 0.980392158031464,
-	      "id": 47,
-	      "pt": {
-	        "x": -42.4225044250488,
-	        "y": 35.0098114013672
-	      },
-	      "type": "topcode"
-	    },
-	    {
-	      "angle": -0.555820226669312,
-	      "confidence": 0.988235294818878,
-	      "id": 369,
-	      "pt": {
-	        "x": 36.3182563781738,
-	        "y": 6.81909132003784
-	      },
-	      "type": "topcode"
-	    }
-	  ],
-	  "setup": {
-	    "Quality": 3,
-	    "Response": 1.30360794067383,
-	    "standRect": {
-	      "h": 480,
-	      "w": 36,
-	      "x": 51,
-	      "y": 0
-	    },
-	    "version": "v2"
-	  },
-	  "time": 127686126
-	}
-	* */
+	 * Skip all events while it is in the muted state.
+	 */
+	void Mute(bool _mute);
+};
 
-	[System.Serializable]
-	public class VisionItem {
-		public VisionItem(int _id, Vector2 _pt, float _angle, float _confidence = 1.0f) {
-			id = _id;
-			pt = _pt;
-			angle = _angle;
-			confidence = _confidence;
-		}
+/*
+ * Formatting input in the way the JSON will come from vision platform
+ */
+[System.Serializable]
+public class VisionEventInput {
+	public List<VisionEventItem> items;
+	public VisionEventSetup setup;
 
-		public int id;
-		public Vector2 pt;
-		public float angle;
-		public float confidence;
+	public VisionEventInput() {
+		items = new List<VisionEventItem>();
+		setup = new VisionEventSetup();
 	}
 
-	[System.Serializable]
-	public class VisionResponse {
-		public int time; // milliseconds
-		public int frameCounter;
-		public VisionItem[] items;
-		public float[] detectionArea; // [x0, y0, x1, y1, x2, y2, x3, y3]
-		public SetupCalibration setupAndCalibration;
+	public VisionEventInput(List<TangibleObject> objects) {
+		items = new List<VisionEventItem>();
 
-		[System.NonSerialized] public float dt; // computed by the low level filter
+		foreach(TangibleObject obj in objects) {
+			items.Add(new VisionEventItem(obj));
+		}
 	}
-
-    // Declare delegate -- defines required signature: 
-    public delegate Event EventDelegate(Event processEvent);
-		
-	public class UserId {
-		 public const int INVALID = -1;
-	}
-	
-    interface Controller {
-
-        /*
-         * Register user to receive new input events via call-back. Input parameters:
-         * uid: id of the user (or game)
-         * config: controller configuration parameters specific to user
-         */
-		bool Register(int userid, Config config, EventDelegate processEvent, int automaticDumpInterval);
-
-        /*
-         * Un-register the user (e.g. when game ends). This could be used to turn off controller
-         * process all together until new user comes along and flush out any input buffers.
-         */
-        void Unregister(int userid);
-		
-		/*
-		 * Skip all events while it is in the muted state.
-		 */
-		void Mute(bool _mute);
-    };
- 
-    /*
-     * Input event
-     */
-    public class Event {
-		public VisionResponse response;     // low level
-
-		/*
-         * Detected objects at every frame.
-         * TODO(jerome): deprecate this
-         */
-		public TangibleObject[] objects;    // High level
-		
-        public float[] bounds; // [x0, y0, x1, y1, x2, y2, x3, y3]
-        
-		public string SimulateRaw() {
-			// This must match the feed from native
-			string raw = "";
-			foreach (TangibleObject t in objects) {
-				raw += t.raw + ";";
-			}
-			return raw;
-		}
-
-		public static VisionResponse SimulateTangibleObjectsToVisionResponse(TangibleObject[] objects) {
-			// This must match the feed from native
-			VisionResponse fake_response = new VisionResponse();
-
-			fake_response.time = Mathf.RoundToInt(UnityEngine.Time.time * 1000);
-			fake_response.detectionArea = Tangible.FOVHelper.DefaultDetectionAreaBounds();
-
-			List<VisionItem> items = new List<VisionItem>();
-			foreach (TangibleObject t in objects) {
-				items.Add(new VisionItem(t.id, new Vector2(t.location.X, t.location.Y), t.location.Orientation));
-			}
-			fake_response.items = items.ToArray();
-			return fake_response;
-		}
-
-		public static List<TangibleObject> VisionResponseToTangibleObjects(VisionResponse response, Config.RecognitionMode recognitionMode) {
-
-			List<TangibleObject> tangibles = new List<TangibleObject>();
-			foreach (VisionItem item in response.items) {
-				TangibleObject tangible = new TangibleObject(item.id, item.id, recognitionMode);
-				tangible.location.X = item.pt.x;
-				tangible.location.Y = item.pt.y;
-				tangible.location.Orientation = item.angle;
-				tangible.visible = true;
-				tangible.lastVisible = response.time / 1000.0f; // ms -> s
-				tangibles.Add(tangible);
-			}
-
-			return tangibles;
-		}
-    };
-
-    /*
-     * Tangible Object
-     */
-    public class TangibleObject {
-		public enum Shape {
-			none = -1,
-			card = 0,
-			tangram_big_triangle = 1,
-			tangram_medium_triangle = 2,
-			tangram_small_triangle = 3,
-			tangram_square = 4,
-			tangram_parallelogram_front = 5,
-			tangram_parallelogram_back = 6,
-            card_number = 7,
-            card_dot = 8,
-            color_coin = 9,
-            secret_number = 10,
-        };
-
-		public TangibleObject (int _id, int _unique_id, Shape _shape) {
-			id = _id;
-			unique_id = _unique_id;
-			shape = _shape;
-			location = new Location();
-		}
-
-		public TangibleObject (int _id, int _unique_id, Config.RecognitionMode recognitionMode) {
-            id = _id;
-            unique_id = _unique_id;
-			shape = GetShape(id, recognitionMode);
-			location = new Location();
-        }
-        
-        public TangibleObject(TangibleObject tangible) {
-            id = tangible.id;
-            unique_id = tangible.unique_id;
-            shape = tangible.shape;
-            visible = tangible.visible;
-            lastVisible = tangible.lastVisible;
-            raw = tangible.raw;
-            location = new Location(tangible.location);
-        }
-
-		Shape GetShape(int id, Config.RecognitionMode recognitionMode) {
-			if (recognitionMode == Config.RecognitionMode.TANGRAMS) {
-				return TangramHelper.GetShape (id);
-			}
-			return Shape.card;
-		}
-		
-		public override string ToString() {
-            return id + "," + location.ToString() + "," + (visible? "1" : "0");
-		}
-
-        public string ToNiceString() {
-            return unique_id + " (" + id + ") ," + location.ToString() + "," + (visible? "visible" : "hidden");
-        }
-
-        public readonly int id;
-        public int unique_id;
-        public readonly Shape shape;
-		public string raw;
-		public bool visible;
-        public Location location;
-		public float lastVisible;
-    };
- 
-    /*
-     * Object location on physical surface.
-     * TODO: Add transformation details from physical to digital surface.
-     */
-    public class Location {
-        public Location (float _x = 0.0f, float _y = 0.0f, float _orientation = 0.0f) {
-            x = _x;
-            y = _y;
-            orientation = _orientation;
-        }
-        
-        public Location(Location location) {
-            x = location.x;
-            y = location.y;
-            orientation = location.orientation;
-        }
-     
-        private float x;
-
-        public float X {
-            get { return x; }
-            set { x = value; }
-        }
-     
-        private float y;
-
-        public float Y {
-            get { return y; }
-            set { y = value; }
-        }
-     
-        private float orientation;
-
-        public float Orientation {
-            get { return orientation; }
-            set { orientation = value; }
-        }
-		
-		public override string ToString() {
-			return X + "," + Y + "," + Orientation;
-		}
-    };
- 
-    public class Config {
-		// the values matches the c++ VisionPlatform values.
-		public enum RecognitionMode {
-			NONE = 0,
-			IMAGECARD = 1,
-			TANGRAMS = 2,
-			LETTER_TILES = 3,
-			MATH_MANIPULATIVES = 27,
-			STRAWBIES = 31,
-			TOPCODE = 45
-		};
-		
-		public Config(RecognitionMode _recognition) {
-			recognition = _recognition;
-		}
-		
-		private RecognitionMode recognition;
-		
-		public RecognitionMode Recognition {
-            get { return recognition; }
-        }
-    };
-     
 }
 
+[System.Serializable]
+public class VisionEventSetup {
+	public int Quality;
+	public float Response;
+	public VisionStandRect standRect;
+	public string version;
+
+	public VisionEventSetup() {
+	}
+}
+
+[System.Serializable]
+public class VisionStandRect {
+	public int h, w, x, y;
+
+	public VisionStandRect() {
+	}
+}
+
+[System.Serializable]
+public class VisionEventItem {
+	public string color;
+	public float confidence;
+	public string letter;
+	public VisionEventLocation pt;
+
+	public VisionEventItem() {
+		pt = new VisionEventLocation();
+	}
+
+	public VisionEventItem(TangibleObject obj) {
+		color = obj.Color;
+		confidence = obj.confidence;
+		letter = obj.letter.ToString();
+		pt = obj.location;
+	}
+}
+
+[System.Serializable]
+public class VisionEventLocation {
+	public float x;
+	public float y;
+	public float orientation;
+
+	public VisionEventLocation() {
+		x = y = orientation = 0f;
+	}
+}
+
+// Internal representation we will pass around of a detected object
+public class TangibleObject {
+	public delegate void EventDelegate(VisionEventInput processEvent);
+
+	public static int CARDS_PER_ALPHABET = 26;
+	public static int NUM_ALPHABETS = 2;
+	public static int NUM_PLAYERS = 2;
+
+	public TangibleObject(VisionEventItem item) {
+		if (string.IsNullOrEmpty(item.letter)) {
+			letter = 'a';
+		} else {
+			if (item.letter.Length > 1) {
+				Debug.LogWarning("[TangibleObject] letter string input too long: " + letter);
+			}
+			letter = item.letter[0];
+		}
+
+		player = ColorToPlayer(item.color);
+		confidence = item.confidence;
+		location = item.pt;
+	}
+
+	public TangibleObject(int id) {
+		Id = id;
+		location = new VisionEventLocation();
+	}
+
+	public char letter;
+	public int player;
+	public float confidence;
+	public VisionEventLocation location;
+
+	public int Id {
+		get { return ToId(letter, player); }
+		private set {
+			letter = LetterFromId(value).ToString()[0];
+			player = PlayerFromId(value);
+			confidence = 1f;
+		}
+	}
+
+	public string Color {
+		get { return PlayerToColor(player); }
+		private set { player = ColorToPlayer(value); }
+	}
+
+	public int Index {
+		get { return ToIndex(letter, player); }
+		private set { Id = IndexToId(value); }
+	}
+
+	public static int ToIndex(char letter, int player) {
+		int offset = 0;
+		int index = 0;
+
+		if (char.IsLower(letter)) {
+			index = (int)letter - 'a';
+			offset = CARDS_PER_ALPHABET * NUM_PLAYERS;
+		} else {
+			index = (int)letter - 'A';
+			offset = 0;
+		}
+
+		offset += player * CARDS_PER_ALPHABET;
+		return index + offset;
+	}
+
+	public static int ToId(char letter, int player) {
+		return (player * 1024) + (int)letter;
+	}
+
+	public static char LetterFromId(int id) {
+		return (char)(id % 1024);
+	}
+
+	public static int PlayerFromId(int id) {
+		return id / 1024;
+	}
+
+	public override string ToString() {
+		return letter + " player=" + player;
+	}
+
+	public static string PlayerToColor(int player) {
+		return DeckCard.TEAMCOLORS.ContainsKey(player) ? DeckCard.TEAMCOLORS[player] : DeckCard.TEAMCOLORS[ColorToPlayer("")];
+	}
+
+	public static int ColorToPlayer(string color) {
+		if (DeckCard.TEAMNAMES.ContainsKey(color)) {
+			return DeckCard.TEAMNAMES[color];
+		} else {
+			Debug.LogWarning("[Controller] Unknown player color: " + color);
+			return 0;
+		}
+	}
+
+	public static int IdToIndex(int id) {
+		return ToIndex(LetterFromId(id), PlayerFromId(id));
+	}
+
+	public static int IndexToId(int index) {
+		bool uppercase = index < CARDS_PER_ALPHABET * NUM_PLAYERS;
+		if (!uppercase) {
+			index -= CARDS_PER_ALPHABET * NUM_PLAYERS;
+		}
+
+		int player = index / CARDS_PER_ALPHABET;
+		int letter = index % CARDS_PER_ALPHABET;
+		return ToId((char)(letter + (uppercase ? 'A' : 'a')), player);
+	}
+};

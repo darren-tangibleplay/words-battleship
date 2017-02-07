@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5227d2480a20d490d8998117e309580b, type: 2}
   - {fileID: 11400000, guid: 67ada6a5d96514e3895a3ba6c53ab56e, type: 2}
   MaxWordLength: 15
-  WordSelectTimeLimit: 20
+  WordSelectTimeLimit: 30
   GuessWordTimeLimit: 10
   EnableThemes: 1
   PlayerColors:

@@ -1,122 +1,94 @@
-using UnityEngine;
-using System.Runtime.InteropServices;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
-public class OnScreenController : MonoBehaviour, Tangible.Controller {
-	const float VERTICAL_BUFFER = 10f;
-	const float HORIZONTAL_BUFFER = 10f;
+public class OnScreenController : MonoBehaviour, Controller {
 
     // Config
-    [SerializeField]
-    private float areaWidth = 768;
-    public float AreaWidth { get { return areaWidth; } }
+    public float areaWidth { get { return Screen.width; } }
+    public float areaHeight { get { return Screen.height; } }
+    public float cardSizeScreen;
+	public Transform margins;
 
-    [SerializeField]
-    private float areaHeight = 1024;
-    public float AreaHeight { get { return areaHeight; } }
-
-    [SerializeField]
-    private Transform margins;
+	public float scaleFactor = 0.4f;
 
     // Controller
-    private int userId = Tangible.UserId.INVALID;
-    private Tangible.Config config = null;
-    private Tangible.EventDelegate processEvent = null;
+    private TangibleObject.EventDelegate processEvent = null;
     private float fovFactor = 1.0f;
     private bool dispatchRequested = false;
-    
-    private List<Tangible.TangibleObject> tangibles_ = new List<Tangible.TangibleObject>();
-    private Tangible.UniqueIdHelper unique_id_helper_;
-
-    private Deck deck;
+    private List<TangibleObject> objects = new List<TangibleObject>();
+	private Deck deck;
 	private float originalCameraFOV;
 	private float originalOrthographicSize;
-    private bool random_trigger_ = false;
+	private float screenToMillimeter;
+	private float sizeScreen;
 	private bool mute = false;
-	
+
     //----------
     // Methods
     //----------
-				
+
 	public void Init(Deck _deck) {
 		deck = _deck;
-		unique_id_helper_ = new Tangible.UniqueIdHelper (deck);
+		sizeScreen = cardSizeScreen;
+		float marginScreen = cardSizeScreen;
+		fovFactor = 1.0f + Mathf.Max(marginScreen / areaWidth, marginScreen / areaHeight) * 1.25f;
+		screenToMillimeter = deck.GetSizeMillimeter() / sizeScreen;
 	}
 
 	private void Activate() {
-		CreateOnScreenObjects();
-
 		originalCameraFOV = Camera.main.fieldOfView;
 		originalOrthographicSize = Camera.main.orthographicSize;
-		float multiplier = fovFactor;
 		if (Camera.main.orthographic) {
-			multiplier *= 1.14f;
-			Camera.main.orthographicSize *= multiplier;
+			Camera.main.orthographicSize *= fovFactor * 1.14f;
 		} else {
-			Camera.main.fieldOfView *= multiplier;
+	        Camera.main.fieldOfView *= fovFactor;
 		}
 
-		UIManager uiManager = FindObjectOfType<UIManager>();
-		if (uiManager != null) {
-			CanvasScaler scaler = uiManager.GetComponent<CanvasScaler> ();
-			if (scaler != null && scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize) {
-				scaler.referenceResolution *= multiplier;
-			}
-		}
-			
-        random_trigger_ = true;
-        StartCoroutine(OnRandomTrigger());
+		// margins.localScale = new Vector3(areaWidth, areaHeight, 1.0f);
+
+        CreateOnScreenObjects();
 	}
-	
-	private void Deactivate() {
-        random_trigger_ = false;
 
+	private void Deactivate() {
 		DeleteCards();
 
 		Camera.main.fieldOfView = originalCameraFOV;
 		Camera.main.orthographicSize = originalOrthographicSize;
 	}
-	
-    public void OnObjectEnter(Tangible.TangibleObject tangible) {
-        tangibles_.Add(tangible);
+
+    public void OnObjectEnter(TangibleObject card) {
+        objects.Add(card);
         dispatchRequested = true;
     }
 
-    public void OnObjectUpdate(Tangible.TangibleObject tangible) {
+    public void OnObjectUpdate(TangibleObject card) {
         dispatchRequested = true;
     }
 
-    public void OnObjectExit(Tangible.TangibleObject tangible) {
-        tangibles_.Remove(tangible);
+    public void OnObjectExit(TangibleObject card) {
+        objects.Remove(card);
         dispatchRequested = true;
     }
-	
+
 	public void AnimateToOriginal() {
 		OnScreenObject[] objs = gameObject.GetComponentsInChildren<OnScreenObject>();
 		foreach (OnScreenObject obj in objs) {
 			obj.AnimateToOriginal();
 		}
 	}
-    	
+
 	public void OnMotionEnd(OnScreenObject last) {
 		List<Vector2[]> polygons = new List<Vector2[]>();
 		OnScreenObject[] objs = gameObject.GetComponentsInChildren<OnScreenObject>();
 		foreach (OnScreenObject obj in objs) {
 			if (obj == last) continue;
-            polygons.Add(obj.snapPolygon);
+			polygons.Add(obj.snapPolygon);
 		}
-        Vector2 offset = Tangible.SnapHelper.SnapOffset(last.snapPolygon, polygons);
+		Vector2 offset = Tangible.SnapHelper.SnapOffset(last.snapPolygon, polygons);
 		last.MoveBy(offset);
 	}
-
-    IEnumerator OnRandomTrigger() {
-        while (random_trigger_) {
-            yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
-            dispatchRequested = true;
-        }
-    }
 
     private void DispatchEvent() {
         if (processEvent == null) {
@@ -125,138 +97,55 @@ public class OnScreenController : MonoBehaviour, Tangible.Controller {
 		}
         dispatchRequested = false;
 		if (mute) return;
+		VisionEventInput e = new VisionEventInput(objects);
 
-        List<Tangible.TangibleObject> tangibles = unique_id_helper_.UpdateUniqueIds(tangibles_);
-
-        Tangible.Event e = new Tangible.Event();
-		e.objects = tangibles.ToArray();
-        e.bounds = null;
-        
-        Tangible.Event predicted_event = processEvent(e);
-        HintEvent(predicted_event);
-    }
-    
-    void HintEvent(Tangible.Event e) {
-        string s = "";
-        if (e != null) {
-            foreach (Tangible.TangibleObject tangible in e.objects) {
-				Tangible.TangibleObject t = new Tangible.TangibleObject(tangible);
-                t.location.Orientation = -t.location.Orientation;
-                s += t.ToString() + ";";
-            }
-        }
-        //Debug.Log(s);
-    }
-	
-    void Dump() {
-        Debug.Log(config.ToString());
+        processEvent(e);
     }
 
-    void CreateOnScreenObjects() {
+	void CreateOnScreenObjects() {
 		if (deck == null) Debug.LogError("A Deck must be specified on the Controller");
+		float margin = (Mathf.Min(areaWidth, areaHeight) * scaleFactor) * (fovFactor - 1.0f) / 1.1f;
+        int horizontalCount = (int)(areaWidth / margin) + 1;
+        int verticalCount = (int)(areaHeight / margin) + 1;
         Vector3 p = margins.localPosition;
-		float marginZ = p.z;
-		float xPos = areaWidth * -0.5f;
-		float yPos = areaHeight * 0.5f;
-		List<int> cardIds = deck.GetIdsForOnScreenCards ();
-		int numCards = cardIds.Count;
-		int side = 0;
-		float topBorder = 0f;
-		float bottomBorder = 0f;
-		float leftBorder = 0f;
-		float rightBorder = 0f;
-		Dictionary<string,int> stackKeyToPlace = new Dictionary<string, int>();
-		for (int i = 0; i < numCards; i++) {
-			int id = cardIds [i];
-			//int index = deck.GetIndex (id);
-			// if this is only the pressed state for another id, don't add a separate card for it
-			string stackKey = deck.GetStackKey(id);
-			if(!stackKeyToPlace.ContainsKey(stackKey)){
-				stackKeyToPlace.Add(stackKey, stackKeyToPlace.Count);
-			}
-			int index = stackKeyToPlace[stackKey];
-			if (deck.IsPressedState (id)) {
-				continue;
-			}
-				
-			side = side % 4;
-			if (side == 0) {
-				p.x = xPos + deck.GetWidthScreen (id) * 0.5f;
-				p.y = yPos + deck.GetHeightScreen (id) * 0.5f + VERTICAL_BUFFER;
-				topBorder = Mathf.Max (deck.GetHeightScreen (id) + VERTICAL_BUFFER, topBorder);
-				xPos += (deck.GetWidthScreen (id) + HORIZONTAL_BUFFER);
-				if (xPos >= areaWidth * 0.5f) {
-					xPos = areaWidth * 0.5f;
-					side++;
-				}
-			} else if (side == 1) {
-				p.y = yPos - deck.GetHeightScreen (id) * 0.5f;
-				p.x = xPos + deck.GetWidthScreen (id) * 0.5f + HORIZONTAL_BUFFER;
-				rightBorder = Mathf.Max (deck.GetWidthScreen (id) + HORIZONTAL_BUFFER, rightBorder);
-				yPos -= (deck.GetHeightScreen (id) + VERTICAL_BUFFER);
-				if (yPos <= areaHeight * -0.5f) {
-					yPos = areaHeight * -0.5f;
-					side++;
-				}
-			} else if (side == 2) {
-				p.x = xPos - deck.GetWidthScreen (id) * 0.5f;
-				p.y = yPos - deck.GetHeightScreen (id) * 0.5f - VERTICAL_BUFFER;
-				bottomBorder = Mathf.Max (deck.GetHeightScreen (id) + VERTICAL_BUFFER, bottomBorder);
-				xPos -= (deck.GetWidthScreen (id) + HORIZONTAL_BUFFER);
-				if (xPos <= areaWidth * -0.5f) {
-					xPos = areaWidth * -0.5f;
-					side++;
-				}
-			} else if (side == 3) {
-				p.y = yPos + deck.GetHeightScreen (id) * 0.5f;
-				p.x = xPos - deck.GetWidthScreen (id) * 0.5f - HORIZONTAL_BUFFER;
-				leftBorder = Mathf.Max (deck.GetWidthScreen (id) + HORIZONTAL_BUFFER, leftBorder);
-				yPos += (deck.GetHeightScreen (id) + VERTICAL_BUFFER);
-				if (yPos >= areaHeight * 0.5f) {
-					yPos = areaHeight * 0.5f;
-					side++;
-				}
-			}
-				  
-			p.z = marginZ + deck.GetTileZMod (id);
-			int idCount = deck.GetIdConfig ().GetCountForId (id);
-			for (int j = 0; j < idCount; j++) {
-				OnScreenObject card = Instantiate (deck.GetPrefab (), p, Quaternion.identity) as OnScreenObject;
-				int unique_id = id;
-				card.Init (this, id, unique_id, deck.GetShape (index), deck.GetCardDisplayScaleX (id), 
-					deck.GetCardDisplayScaleY (id), deck, deck.GetDefaultRotationForId (id));
-				if (deck.HasPressedState (id)) {
-					int pressedId = deck.GetIdForPressedState (id);
-					card.AddPressedId (pressedId, pressedId);
-				}
-				if (deck.IsButton (id)) {
-					card.AddSimpleButton ();
-				}
-				card.onMotionEnd = OnMotionEnd;
-			}
-		}
-		fovFactor = 1.0f + Mathf.Max((leftBorder + rightBorder)/ (areaWidth * 2.0f), (topBorder + bottomBorder)/(areaHeight * 2.0f));
+        for (int k = 0; k < deck.GetCount(); k++) {
+            // Create a card at the right position
+            if (k < horizontalCount) {
+                p.x = (k + 0.5f) * margin - areaWidth / 2.0f;
+                p.y = (areaHeight + margin) / 2.0f;
+            } else if (k < horizontalCount + verticalCount) {
+                p.x = (areaWidth + margin) / 2.0f;
+                p.y = areaHeight / 2.0f - (k - horizontalCount + 0.5f) * margin;
+            } else if (k < 2 * horizontalCount + verticalCount) {
+                p.x = areaWidth / 2.0f - (k - horizontalCount - verticalCount + 0.5f) * margin;
+                p.y = -(areaHeight + margin) / 2.0f;
+            } else if (k < 2 * horizontalCount + 2 * verticalCount) {
+                p.x = -(areaWidth + margin) / 2.0f;
+                p.y = -areaHeight / 2.0f + (k - 2 * horizontalCount - verticalCount + 0.5f) * margin;
+            }
+
+            OnScreenObject card = Instantiate(deck.GetPrefab(), p, Quaternion.identity) as OnScreenObject;
+			card.Init(this, TangibleObject.IndexToId(k), sizeScreen * scaleFactor, screenToMillimeter);
+			card.onMotionEnd = OnMotionEnd;
+
+            // Set the card texture and uv rectangle
+			MeshRenderer cardRenderer = card.GetComponentInChildren<MeshRenderer>();
+			deck.AssignGraphics(k, cardRenderer);
+        }
     }
-	
+
 	void DeleteCards() {
 		OnScreenObject[] objs = gameObject.GetComponentsInChildren<OnScreenObject>();
 		foreach (OnScreenObject obj in objs) {
 			GameObject.Destroy(obj.gameObject);
 		}
-
-        unique_id_helper_.Reset();
 	}
 
     //----------------
     // MonoBehaviour
     //----------------
-	
-	void Tangible.Controller.Mute(bool _mute) {
-        if (mute != _mute) {
-            // Reset cached data
-            unique_id_helper_.Reset();
-        }
 
+	void Controller.Mute(bool _mute) {
 		mute = _mute;
 	}
 
@@ -264,29 +153,23 @@ public class OnScreenController : MonoBehaviour, Tangible.Controller {
         if (dispatchRequested) {
             DispatchEvent();
         }
+		if (Input.touchCount > 0) {
+//			Debug.Log("touchCount " + Input.touchCount);
+		}
     }
 
     //----------------------
-    // Tangible.Controller
+    // Controller
     //----------------------
 
-	bool Tangible.Controller.Register(int _userId, Tangible.Config _config, Tangible.EventDelegate _processEvent, int automaticDumpInterval) {
-        userId = _userId;
-        config = _config;
+    bool Controller.Register(TangibleObject.EventDelegate _processEvent) {
         processEvent = _processEvent;
-		
 		Activate();
-		
 		return true;
     }
 
-    void Tangible.Controller.Unregister(int _userId) {
-        if (userId == _userId) {
-            userId = Tangible.UserId.INVALID;
-            config = null;
-            processEvent = null;
-			
-			Deactivate();
-        }
+    void Controller.Unregister() {
+        processEvent = null;
+		Deactivate();
     }
 }

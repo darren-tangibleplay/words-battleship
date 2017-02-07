@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: b54d71d3a9b524bd9aa138e378d7df65
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SolidLarge2048_0
+    21300002: SolidLarge2048_1
+    21300004: SolidLarge2048_2
+    21300006: SolidLarge2048_3
+    21300008: SolidLarge2048_4
+    21300010: SolidLarge2048_5
+    21300012: SolidLarge2048_6
+    21300014: SolidLarge2048_7
+    21300016: SolidLarge2048_8
+    21300018: SolidLarge2048_9
+    21300020: SolidLarge2048_10
+    21300022: SolidLarge2048_11
+    21300024: SolidLarge2048_12
+    21300026: SolidLarge2048_13
+    21300028: SolidLarge2048_14
+    21300030: SolidLarge2048_15
+    21300032: SolidLarge2048_16
+    21300034: SolidLarge2048_17
+    21300036: SolidLarge2048_18
+    21300038: SolidLarge2048_19
+    21300040: SolidLarge2048_20
+    21300042: SolidLarge2048_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

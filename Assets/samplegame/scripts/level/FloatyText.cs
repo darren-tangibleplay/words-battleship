@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class FloatyText : MonoBehaviour {
 	const int FLOATY_TEXT_OFFSET = 25;
@@ -9,7 +9,7 @@ public class FloatyText : MonoBehaviour {
         FLOAT,
         FOLLOW,
     }
-	
+
 	private int float_distance_ = 50;
 
     private Text text_;
@@ -32,7 +32,7 @@ public class FloatyText : MonoBehaviour {
 
 		override_pos_ = override_pos;
 
-		if (init) text.Init(anchor, msg, behavior, override_pos_); 
+		if (init) text.Init(anchor, msg, behavior, override_pos_);
         return text;
     }
 
@@ -84,7 +84,7 @@ public class FloatyText : MonoBehaviour {
 		}
 
 		transform.position = ClampToScreen(new Vector3(spawn_pos_.x, spawn_pos_.y + FLOATY_TEXT_OFFSET, 0));
-        transform.SetParent(Game.Level.LevelUIRoot);
+        // transform.SetParent(Game.Level.LevelUIRoot);
 
         if (behavior == Behavior.FOLLOW) {
             anchor_ = anchor;
@@ -92,7 +92,7 @@ public class FloatyText : MonoBehaviour {
             FloatAndFade();
         }
     }
-	
+
 	void FloatAndFade() {
         if (text_flow_ != null) text_flow_.destroy();
 		text_flow_ = new GoTweenFlow();

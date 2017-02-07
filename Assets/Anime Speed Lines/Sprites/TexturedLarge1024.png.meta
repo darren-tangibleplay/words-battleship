@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: 8c456f67b22fb4c6c9c1ae8cec15fe0d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TexturedLarge1024_0
+    21300002: TexturedLarge1024_1
+    21300004: TexturedLarge1024_2
+    21300006: TexturedLarge1024_3
+    21300008: TexturedLarge1024_4
+    21300010: TexturedLarge1024_5
+    21300012: TexturedLarge1024_6
+    21300014: TexturedLarge1024_7
+    21300016: TexturedLarge1024_8
+    21300018: TexturedLarge1024_9
+    21300020: TexturedLarge1024_10
+    21300022: TexturedLarge1024_11
+    21300024: TexturedLarge1024_12
+    21300026: TexturedLarge1024_13
+    21300028: TexturedLarge1024_14
+    21300030: TexturedLarge1024_15
+    21300032: TexturedLarge1024_16
+    21300034: TexturedLarge1024_17
+    21300036: TexturedLarge1024_18
+    21300038: TexturedLarge1024_19
+    21300040: TexturedLarge1024_20
+    21300042: TexturedLarge1024_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

@@ -49,29 +49,6 @@ public class Game : GameController {
 
     Color settings_button_color_;
 
-	static public ClusterProcessor ClusterProcessor {
-		get {
-			if (Level != null) {
-				return Level.VisionDisplay;
-			}
-			return null;
-		}
-	}
-
-	static public EventHelper.IsPairFunc IsPairFunc {
-		get {
-			// depends on game and input mode, for now just returning IsPair for sample game
-			return EventHelper.IsPair;
-		}
-	}
-
-	static public ClusterHelper.SortType ClusterSort {
-		get {
-			// depends on game, sorting vertically and horizontally for sample game
-			return ClusterHelper.SortType.ROWS;
-		}
-	}
-
 	static public bool UseHysteresis {
 		get {
 			return true;
@@ -97,19 +74,16 @@ public class Game : GameController {
         get { return enableVisionLineHelper; }
 	}
 
-    private SelectorController controller_;
+        private Controller controller_;
 
-	static public Deck Deck {
-		get {
-			return singleton.controller_.Deck;
-		}
-	}
+        [SerializeField]
+        private OnScreenController on_screen_controller_prefab_;
 
+        [SerializeField]
+        private PhysicalController physical_controller_prefab_;
 
-    private EventProcessor event_processor_;
-    static public EventProcessor EventProcessor {
-        get { return singleton.event_processor_; }
-    }
+        [SerializeField]
+    	public Deck deck;
 
 	private StateMachine state_machine_;
     static public StateMachine StateMachine {
@@ -121,25 +95,11 @@ public class Game : GameController {
 		}
     }
 
-    static public SampleGameLevel Level {
-        get {
-			if (singleton == null || singleton.level_manager_ == null) {
-				return null;
-			}
-			return singleton.level_manager_.Level;
-		}
-    }
-
 	SampleGamePlayerState player_state_ = new SampleGamePlayerState();
 	SaveData display_data_;
 
     static public SaveData SaveData { get { return singleton.player_state_.SaveData; } }
     static public SaveData DisplayData { get { return singleton.display_data_; } }
-
-	private LevelManager level_manager_;
-    static public LevelManager LevelManager {
-        get { return singleton.level_manager_; }
-    }
 
     private TransitionManager transition_manager_;
     static public TransitionManager TransitionManager {
@@ -189,17 +149,32 @@ public class Game : GameController {
 
 		player_state_.Init();
 
-        controller_ = GetComponent<SelectorController>();
-        if (controller_ == null) {
-            Debug.LogError("A SelectorController must be attached to the current object");
-        }
+        deck = GetComponent<DeckCard>();
 
-        level_manager_ = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+
+
+        #if UNITY_EDITOR
+        // We just one instance of the physical controller
+        Instantiate(physical_controller_prefab_);
+
+        OnScreenController onScreenController = Instantiate(on_screen_controller_prefab_) as OnScreenController;
+        onScreenController.cardSizeScreen = 64f;
+        onScreenController.Init(deck);
+
+        controller_ = onScreenController;
+        #else
+        PhysicalController physicalController = Instantiate(physical_controller_prefab_) as PhysicalController;
+        physicalController.Init(deck);
+
+        controller_ = physicalController;
+        #endif
+
+        controller_.Register(processEvent);
+
+        // level_manager_ = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         transition_manager_ = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TransitionManager>();
 
-        event_processor_ = gameObject.AddComponent<EventProcessor>();
-
-		controller_.Register(0, processEvent);
+        // event_processor_ = gameObject.AddComponent<EventProcessor>();
 
         state_machine_ = gameObject.AddComponent<StateMachine>();
         state_machine_.onStateChange = HandleStateChange;
@@ -210,7 +185,7 @@ public class Game : GameController {
 
 		RemoveUnusedAchievements ();
 
-		level_manager_.UpdateAchievementGoals ();
+		// level_manager_.UpdateAchievementGoals ();
 
 		ProfileManager.instance.WhenReady( () => {
 			ProfilesReady();
@@ -320,7 +295,7 @@ public class Game : GameController {
 		player_state_.Reset (currentProfileId);
         display_data_ = player_state_.SaveData.DeepCopy();
 
-		Game.LevelManager.UnlockInitialCells ();
+		// Game.LevelManager.UnlockInitialCells ();
 
 		// clear achievements
 		AchievementManager.instance.DeleteProgress(ProfileManager.instance.ActiveAccount!=null?ProfileManager.instance.ActiveAccount.id:"default");
@@ -337,7 +312,7 @@ public class Game : GameController {
         display_data_ = player_state_.SaveData.DeepCopy();
 
 		// unlock initial cells if they haven't been unlocked yet, need to wait for state to be loaded to do this
-		Game.LevelManager.UnlockInitialCells ();
+		// Game.LevelManager.UnlockInitialCells ();
 
 		is_ready_ = true;
 
@@ -458,7 +433,7 @@ public class Game : GameController {
 #endif
         enableVisionReportUI = true;
 
-        controller_.SetDebug(enableVisionEventLog);
+        // controller_.SetDebug(enableVisionEventLog);
     }
 
 	public void GoToMainMenuState(string level_name = null) {
@@ -471,38 +446,27 @@ public class Game : GameController {
 			return;
 		}
 
-		if (level_name != null) {
-			state_machine_.PushState (new LevelSelectState (OnLevelSelected, level_name));
-		} else {
-			state_machine_.PushState (new DependencyState());
-		}
+
+		state_machine_.PushState (new DependencyState());
 	}
 
 	void OnLevelSelected() {
 		SampleGameSoundManager.instance.StopBackgroundMusic ();
 
-		// forcing other states on top of this to pop as well to make sure
-		// we can't get into a really bad state if the settings state opens
-		// as the button is clicked
-		state_machine_.ForcePopState(LevelSelectState.STATE_NAME);
-        controller_.AnimateToOriginal();
+        // controller_.AnimateToOriginal();
 		state_machine_.PushState(new PlayState(OnPlayDone));
 	}
 
 	void OnPlayDone() {
 		state_machine_.PopState(PlayState.STATE_NAME);
-        state_machine_.PushState(new LevelSelectState(OnLevelSelected, Level.LevelName));
+        // state_machine_.PushState(new LevelSelectState(OnLevelSelected, Level.LevelName));
 	}
-
-    public void AnimateToOriginal() {
-        controller_.AnimateToOriginal();
-    }
 
     // this function gets called every time we switch states
     // use it to mute/unmute whether vision is needed
     private void HandleStateChange(GameState current) {
         //Debug.Log("Game state changed to: " + current.name.ToUpper() + " (use_vision " + current.useVisionInput.ToString() + ")");
-        controller_.Muted = !current.useVisionInput;
+        controller_.Mute(!current.useVisionInput);
 
 		// check for saving the game on state changes
 		SavePlayerState (true);
@@ -512,10 +476,8 @@ public class Game : GameController {
         if (cheat) {
             if (state_machine_.currentState is SetupState) {
                 ((SetupState)state_machine_.currentState).OnAllDone(null);
-            } else if (state_machine_.currentState is LevelSelectState) {
-                ((LevelSelectState)state_machine_.currentState).DebugSolve();
             } else if (state_machine_.currentState is PlayState) {
-                ((PlayState)state_machine_.currentState).DebugSolve();
+                // ((PlayState)state_machine_.currentState).DebugSolve();
             }
         }
     }
@@ -528,20 +490,24 @@ public class Game : GameController {
 
     }
 
-    Tangible.Event processEvent(Tangible.Event e) {
+    public void processEvent(VisionEventInput e) {
+
+        List<TangibleObject> filtered;
+
+        #if UNITY_EDITOR
+        filtered = Tangible.EventHelper.Copy(e.items);
+        #else
+        filtered = Tangible.EventHelper.FilterBorder(e.items);
+        #endif
+
         // NOTE (darren): vision SDK start point
         var lettersFound = new List<char>();
-		foreach (TangibleObject obj in e.objects) {
-            int charIndex = obj.id % 26;
-            char character = (char)((int)'a' + charIndex);
-            lettersFound.Add(character);
+		foreach (TangibleObject obj in filtered) {
+            lettersFound.Add(obj.letter);
 		}
         Tangible.WordsBattleship.Vision.HandleLettersFromVisionEvent(lettersFound);
         // END
-
-        debug_frame_vision++;
-        return event_processor_.processEvent(e);
-	}
+    }
 
 	override protected void OnUpdate(float delta) {
 		base.OnUpdate (delta);

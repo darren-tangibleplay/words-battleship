@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: c1b10bb4fa4304b3ba00d58c437ea3e9
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TexturedMedium512_0
+    21300002: TexturedMedium512_1
+    21300004: TexturedMedium512_2
+    21300006: TexturedMedium512_3
+    21300008: TexturedMedium512_4
+    21300010: TexturedMedium512_5
+    21300012: TexturedMedium512_6
+    21300014: TexturedMedium512_7
+    21300016: TexturedMedium512_8
+    21300018: TexturedMedium512_9
+    21300020: TexturedMedium512_10
+    21300022: TexturedMedium512_11
+    21300024: TexturedMedium512_12
+    21300026: TexturedMedium512_13
+    21300028: TexturedMedium512_14
+    21300030: TexturedMedium512_15
+    21300032: TexturedMedium512_16
+    21300034: TexturedMedium512_17
+    21300036: TexturedMedium512_18
+    21300038: TexturedMedium512_19
+    21300040: TexturedMedium512_20
+    21300042: TexturedMedium512_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

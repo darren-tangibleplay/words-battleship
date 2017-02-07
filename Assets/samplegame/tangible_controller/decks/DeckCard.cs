@@ -1,53 +1,78 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class DeckCard : Deck {
-    public int widthSubdivision;
+public class DeckCard : MonoBehaviour, Deck {
+	public static Dictionary<string, int> TEAMNAMES = new Dictionary<string, int>() {
+		{ "blue", 0 }, { "red", 1 }
+	};
+
+	public static Dictionary<int, string> TEAMCOLORS = new Dictionary<int, string>() {
+		{ 0, "blue" }, { 1, "red" }
+	};
+
+	public int widthSubdivision;
     public int heightSubdivision;
     public Texture2D atlas;
-	public float sizeScreen;
-	private float sizeMm = 25.4f;
-	public Tangible.Config.RecognitionMode recognitionMode;
 	public OnScreenObject cardPrefab;
 
-	private IdConfig idConfig;
+	private int cardCount;
 
-	virtual protected void Awake() {
-		idConfig = gameObject.GetComponent<IdConfig> ();
-		if (idConfig == null) {
-			Debug.LogError ("IdConfig component must be set on DeckCard");
-		}
-	}
+	private Dictionary<int, Dictionary<char, int>> teamLetterToIndex;
 
-	void Start() {
+	void Awake() {
 		if (atlas.format != TextureFormat.RGB24) {
-			Debug.LogError("Deck texture format must be RGB24");
+			Debug.LogError("Deck texture format must be RGBA32");
 		}
-		if (recognitionMode != Tangible.Config.RecognitionMode.LETTER_TILES && recognitionMode != Tangible.Config.RecognitionMode.MATH_MANIPULATIVES &&
-			recognitionMode != Tangible.Config.RecognitionMode.IMAGECARD) {
-			Debug.LogError ("Unsupported recognition mode set for DeckCard " + recognitionMode);
+
+		teamLetterToIndex = new Dictionary<int, Dictionary<char, int>>();
+		foreach(string team in TEAMNAMES.Keys) {
+			int player = TEAMNAMES[team];
+			Dictionary<char, int> lettersToIndices = new Dictionary<char, int>();
+
+			for(char letter = 'A'; letter <= 'Z'; ++letter) {
+				lettersToIndices.Add(letter, TangibleObject.ToIndex(letter, player));
+				cardCount++;
+			}
+
+			for(char letter = 'a'; letter <= 'z'; ++letter) {
+				lettersToIndices.Add(letter, TangibleObject.ToIndex(letter, player));
+				cardCount++;
+			}
+
+			teamLetterToIndex.Add(TEAMNAMES[team], lettersToIndices);
 		}
 	}
 
-	override public float GetWidthMillimeters(int id) {
-		return sizeMm;
+	// ----------------------------- interface Deck
+
+	public bool Contains(TangibleObject obj) {
+		return TEAMNAMES.ContainsKey(obj.Color) && teamLetterToIndex[TEAMNAMES[obj.Color]].ContainsKey(obj.letter);
 	}
 
-	override public float GetHeightMillimeters(int id) {
-		return sizeMm;
+	public int GetCount() {
+		return cardCount;
 	}
 
-	override public float GetMillimeterToScreen() {
-		return sizeScreen /sizeMm;
+	public float GetSizeMillimeter() {
+		return Tangible.EventHelper.cardSize;
 	}
 
-	override public OnScreenObject GetPrefab() {
+	public OnScreenObject GetPrefab() {
 		return cardPrefab;
 	}
-	
-	override public Tangible.TangibleObject.Shape GetShape(int index) {
-		return Tangible.TangibleObject.Shape.card;
+
+	public void AssignGraphics(int index, MeshRenderer renderer) {
+		AssignTexture(atlas, widthSubdivision, heightSubdivision, index, renderer);
 	}
+
+	public bool ContainsId(int id) {
+		char letter = TangibleObject.LetterFromId(id);
+		int player = TangibleObject.PlayerFromId(id);
+		return teamLetterToIndex.ContainsKey(player) && teamLetterToIndex[player].ContainsKey(letter);
+	}
+
+	// -------------------------------
 
 	// The texture is assumed to have the first card at the top left,
 	// the second just below, etc...
@@ -62,21 +87,9 @@ public class DeckCard : Deck {
         	i = index % subX;
 			j = index / subX;
 		}
-		
+
         renderer.material.mainTexture = texture;
         renderer.material.mainTextureScale = new Vector2(stepX, stepY);
         renderer.material.mainTextureOffset = new Vector2(i * stepX, 1.0f - ((j + 1) * stepY));
-	}
-
-	override protected void AssignGraphicsToMeshRenderer(int index, MeshRenderer renderer) {
-		AssignTexture(atlas, widthSubdivision, heightSubdivision, index, renderer);
-    }
-
-	override public IdConfig GetIdConfig() {
-		return idConfig;
-	}
-
-	override public Tangible.Config.RecognitionMode GetRecognitionMode() {
-		return recognitionMode;
 	}
 }

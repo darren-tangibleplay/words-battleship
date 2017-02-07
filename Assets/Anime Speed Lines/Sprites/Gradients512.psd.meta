@@ -1,7 +1,29 @@
 fileFormatVersion: 2
 guid: 6bd156864371a428a9272a9e279e3c3d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Gradients512_0
+    21300002: Gradients512_1
+    21300004: Gradients512_2
+    21300006: Gradients512_3
+    21300008: Gradients512_4
+    21300010: Gradients512_5
+    21300012: Gradients512_6
+    21300014: Gradients512_7
+    21300016: Gradients512_8
+    21300018: Gradients512_9
+    21300020: Gradients512_10
+    21300022: Gradients512_11
+    21300024: Gradients512_12
+    21300026: Gradients512_13
+    21300028: Gradients512_14
+    21300030: Gradients512_15
+    21300032: Gradients512_16
+    21300034: Gradients512_17
+    21300036: Gradients512_18
+    21300038: Gradients512_19
+    21300040: Gradients512_20
+    21300042: Gradients512_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +57,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

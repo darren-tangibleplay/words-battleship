@@ -53,9 +53,6 @@ public class SampleGameSoundManager : BaseSoundManager {
 			CacheFile(LEVEL_COMPLETE_BUTTONS_NAME);
 			CacheFile(SCORE_INCREASING_NAME);
 		}
-		if (stateName == LevelSelectState.STATE_NAME) {
-			CacheFile(LEVEL_UNLOCK_NAME);
-		}
 
 		// cache always
 		CacheFile(BUTTON_CLICK_NAME);
@@ -74,4 +71,5 @@ public class SampleGameSoundManager : BaseSoundManager {
 	public void OnButtonClick() {
 		PlaySoundFile(BUTTON_CLICK_NAME);
 	}
+
 }

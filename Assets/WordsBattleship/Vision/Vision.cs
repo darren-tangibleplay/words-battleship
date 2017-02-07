@@ -20,7 +20,7 @@ namespace Tangible.WordsBattleship {
             newLetters_.Clear();
 
             foreach (char letter in letters) {
-                lettersFoundThisFrameBuffer_.Add(letter);
+                lettersFoundThisFrameBuffer_.Add(char.ToLower(letter));
             }
 
             foreach (char letter in lettersFoundThisFrameBuffer_) {
@@ -60,10 +60,6 @@ namespace Tangible.WordsBattleship {
                 if (Input.GetKey(letter.ToString())) {
                     lettersFoundThisFrameBuffer_.Add(letter);
                 }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Backspace)) {
-                global::Game.singleton.AnimateToOriginal();
             }
             #endif
         }
