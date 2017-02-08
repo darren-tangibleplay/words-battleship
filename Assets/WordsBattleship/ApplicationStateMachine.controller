@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28deee4aa4861443da21c52bd354019d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000010051757248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff44334b38434c64a9a6b4abc5b7b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 1
+  childTag_: GameSetupChild
 --- !u!114 &114000010067149452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016e54640168b4fc58ed99f0b8d37272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000010224449522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,6 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5501d8316957405391c51be57100fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000010523713214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addfca09602ed4243bab1b83b1e07200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
   delay_: 1.5
 --- !u!114 &114000011575559510
 MonoBehaviour:
@@ -124,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fc5c265a1864af489c85cddfd6be80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000011839644214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9232f1adfe46f4fc4b0f94044b991c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000013115892976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c82ccd80b3754ccb91cc8ff558063a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 1
+  childTag_: GameChild
 --- !u!114 &114000014053453672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1aee6a1d532e4ed2b8a6550e6d7ba8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!114 &114000014169983710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9d1642f6d654c08988ffed5b927730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useChildTag_: 0
+  childTag_: 
 --- !u!1101 &1101000010218971342
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -452,7 +472,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -525,7 +545,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameSetupChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -550,7 +570,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameSetupChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -575,7 +595,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -601,7 +621,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -651,7 +671,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: GameSetupChild
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

@@ -10,7 +10,7 @@ namespace DTObjectPoolManager {
         // PRAGMA MARK - Static
         public static event Action<GameObject> OnGameObjectCreated = delegate {};
 
-        public static T Create<T>(string prefabName = null, GameObject parent = null, bool worldPositionStays = false) where T : MonoBehaviour {
+        public static T Create<T>(string prefabName = null, GameObject parent = null, bool worldPositionStays = false) where T : UnityEngine.Component {
             if (prefabName == null) {
                 prefabName = typeof(T).Name;
             }

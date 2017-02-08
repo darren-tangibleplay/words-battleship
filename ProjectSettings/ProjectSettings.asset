@@ -402,7 +402,7 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: ENABLE_PROTOTRACKING
+    1: ENABLE_PROTOTRACKING;DT_COMMAND_PALETTE
     4: ENABLE_PROTOTRACKING;DT_COMMAND_PALETTE
   metroPackageName: samplegame
   metroPackageVersion: 

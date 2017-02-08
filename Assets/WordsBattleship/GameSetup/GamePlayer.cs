@@ -21,6 +21,13 @@ namespace Tangible.WordsBattleship {
             get; private set;
         }
 
+        public static GamePlayer PreviousPlayer(GamePlayer player) {
+            int index = Array.IndexOf(GamePlayerUtil.ValidPlayers, player);
+            int newIndex = GamePlayerUtil.ValidPlayers.WrapIndex(index - 1);
+
+            return GamePlayerUtil.ValidPlayers[newIndex];
+        }
+
         public static GamePlayer NextPlayer(GamePlayer player) {
             int index = Array.IndexOf(GamePlayerUtil.ValidPlayers, player);
             int newIndex = GamePlayerUtil.ValidPlayers.WrapIndex(index + 1);

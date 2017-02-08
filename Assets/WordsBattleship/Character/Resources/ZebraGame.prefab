@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000013554210236}
   m_IsPrefabParent: 1
+--- !u!1 &1000011805892940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011980144958}
+  m_Layer: 0
+  m_Name: SweatContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000013360440752
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +71,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013750839892}
   m_RootOrder: 0
+--- !u!4 &4000011980144958
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011805892940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013750839892}
+  m_RootOrder: 1
 --- !u!4 &4000013750839892
 Transform:
   m_ObjectHideFlags: 1
@@ -68,6 +96,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011191963760}
+  - {fileID: 4000011980144958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &114000010709973936
@@ -81,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed21ce3eac06c492ba4b54e0ae090adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sweatContainer_: {fileID: 1000011805892940}
+  player_: 0
 --- !u!212 &212000010748803790
 SpriteRenderer:
   m_ObjectHideFlags: 1

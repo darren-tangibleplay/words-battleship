@@ -18,6 +18,7 @@ namespace Tangible.WordsBattleship {
             }
 
             characterView_ = ObjectPoolManager.Create<Character3DView>(character.GamePrefabName, parent: characterContainer_);
+            characterView_.Init(targetPlayer_);
             Game.OnCurrentPlayerChanged += RefreshCurrentPlayer;
             RefreshCurrentPlayer();
         }
